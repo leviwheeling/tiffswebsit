@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
+
+    <!-- Contact Form -->
+    <div>
+      <h1 class="text-3xl font-bold text-brand">Request an Appointment</h1>
+      <p class="mt-2 text-gray-700">Fill out the form and our front‑desk team will reach out soon.</p>
+
+      <form id="contactForm" class="mt-8 space-y-6" @submit.prevent="submitForm($event)">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="flex flex-col">
+            <label for="name" class="text-sm font-medium text-gray-700">Full Name *</label>
+            <input type="text" id="name" name="name" required class="mt-1 py-3 px-4 border border-gray-300 rounded-lg focus:ring-brand focus:border-brand" />
+          </div>
+          <div class="flex flex-col">
+            <label for="phone" class="text-sm font-medium text-gray-700">Phone *</label>
+            <input type="tel" id="phone" name="phone" required class="mt-1 py-3 px-4 border border-gray-300 rounded-lg focus:ring-brand focus:border-brand" />
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <label for="email" class="text-sm font-medium text-gray-700">Email *</label>
+          <input type="email" id="email" name="email" required class="mt-1 py-3 px-4 border border-gray-300 rounded-lg focus:ring-brand focus:border-brand" />
+        </div>
+
+        <div class="flex flex-col">
+          <label for="preferred_date" class="text-sm font-medium text-gray-700">Preferred Date</label>
+          <input type="date" id="preferred_date" name="preferred_date" class="mt-1 py-3 px-4 border border-gray-300 rounded-lg focus:ring-brand focus:border-brand" />
+        </div>
+
+        <div class="flex flex-col">
+          <label for="message" class="text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" name="message" rows="4" class="mt-1 py-3 px-4 border border-gray-300 rounded-lg focus:ring-brand focus:border-brand"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-brand text-white font-medium py-3 rounded-lg hover:opacity-90 transition">Send Request</button>
+      </form>
+    </div>
+
+    <!-- Google Map Embed -->
+    <div>
+      <h2 class="sr-only">Map</h2>
+      <iframe title="Practice location" width="100%" height="480" loading="lazy" style="border:0" allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?q=79+Mall+Rd+Ste+B+South+Williamson+KY+41503&key=YOUR_GOOGLE_MAPS_API_KEY">
+      </iframe>
+      <div class="mt-4 text-gray-700 text-sm">
+        <strong class="text-brand">Address:</strong> 79 Mall Rd, Ste B, South Williamson, KY 41503<br>
+        <strong class="text-brand">Phone:</strong> <a href="tel:+16062370073" class="underline">(606) 237‑0073</a><br>
+        <strong class="text-brand">Email:</strong> <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">duncanfamilydentistry@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast Notification -->
+<div x-show="toast.show" x-transition class="fixed bottom-6 right-6 bg-white shadow-lg border border-brand px-6 py-4 rounded-lg flex items-center space-x-3" x-data="toastStore()" @notify.window="trigger($event.detail)">
+  <svg x-show="toast.success" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+  <svg x-show="!toast.success" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  <span class="text-gray-800 text-sm" x-text="toast.message"></span>
+</div>
+
+<script>
+  // Alpine toast notification store
+  function toastStore() {
+    return {
+      toast: { show: false, message: '', success: true },
+      trigger({ message, success }) {
+        this.toast = { show: true, message, success }
+        setTimeout(() => this.toast.show = false, 5000)
+      }
+    }
+  }
+
+  // Form submission handler
+  async function submitForm(e) {
+    const form = e.target
+    const data = Object.fromEntries(new FormData(form))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      const json = await res.json()
+      window.dispatchEvent(new CustomEvent('notify', { detail: { message: json.message, success: json.success } }))
+      if (json.success) form.reset()
+    } catch (err) {
+      window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'Network error. Please call us!', success: false } }))
+    }
+  }
+</script>
+{% endblock %}

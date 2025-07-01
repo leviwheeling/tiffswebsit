@@ -1,0 +1,7 @@
+{
+    "scripts": {
+      "dev:css": "tailwindcss -i ./app/input.css -o ./app/static/assets/site.css --watch",
+      "build:css": "tailwindcss -i ./app/input.css -o ./app/static/assets/site.css --minify"
+    }
+  }
+  
