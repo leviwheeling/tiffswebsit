@@ -45,13 +45,6 @@
       <h2 class="text-3xl font-bold text-coral">New‑Patient Packet</h2>
       <p class="text-gray-100">Our 12‑page PDF covers medical history, consent, and HIPAA privacy. Complete it at home or on any device, then email it to us—or bring a printed copy to your first visit.</p>
 
-      <!-- Page navigation -->
-      <div class="flex items-center gap-4">
-        <button @click="page=Math.max(1,page-1)" class="p-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40" :disabled="page===1">Prev</button>
-        <span class="text-gray-200">Page <span x-text="page"></span> / <span x-text="total"></span></span>
-        <button @click="page=Math.min(total,page+1)" class="p-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40" :disabled="page===total">Next</button>
-      </div>
-
       <a href="/static/forms/Newpatientpacket.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l4-4h-3V4h-2v8H8l4 4zm8 2H4v2h16v-2z"/></svg>
         Download Full Packet (PDF)

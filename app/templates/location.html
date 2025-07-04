@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Location – Duncan Family Dentistry{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Get Directions</h1>
+</section>
+
+<!-- DIRECTIONS + MAP -->
+<section class="py-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-start">
+
+    <!-- Get Directions card (NOW FIRST) -->
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl space-y-8">
+      <h2 class="text-3xl font-bold text-coral">Quick Directions</h2>
+      <p class="text-gray-100">
+        Tap a button below and your maps app will guide you straight to our front door.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6">
+        <!-- Apple Maps -->
+        <a href="https://maps.apple/p/fThIPA-EoKprhZ" target="_blank"
+           class="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-white/10
+                  border border-white/20 text-white font-semibold hover:bg-white/20 transition">
+          <span class="text-2xl"></span>
+          <span>Open in Apple&nbsp;Maps</span>
+        </a>
+
+        <!-- Google Maps -->
+        <a href="https://www.google.com/maps/dir/?api=1&destination=79+Mall+Rd+Ste+B+South+Williamson+KY+41503"
+           target="_blank"
+           class="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-white/10
+                  border border-white/20 text-white font-semibold hover:bg-white/20 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+          </svg>
+          <span>Open in Google&nbsp;Maps</span>
+        </a>
+      </div>
+
+      <p class="text-xs text-coral leading-relaxed">
+        <strong>Important:</strong> Apple Maps may display our location as
+        <em class="underline">“9-99 Booth&nbsp;Hill”</em>. That is <u>the correct address reference in Apple&nbsp;Maps</u>
+        and will bring you directly to our parking lot at
+        <span class="whitespace-nowrap">79&nbsp;Mall&nbsp;Rd&nbsp;Suite&nbsp;B</span>.
+      </p>
+    </div>
+
+    <!-- Google Map embed (NOW SECOND) -->
+    <div class="reveal w-full h-[28rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+        <iframe class="w-full h-full" loading="lazy" allowfullscreen
+                title="Map to Duncan Family Dentistry"
+                src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503
+                     &t=&z=15&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+      </div>
+      
+
+  </div>
+</section>
+{% endblock %}

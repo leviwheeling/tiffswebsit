@@ -32,7 +32,7 @@
           <input type="date" id="preferred_date" name="preferred_date" class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral" />
         </div>
         <div class="flex flex-col">
-          <label for="message" class="text-sm font-medium text-gray-200">Message (Please do not put any Health Information in this field) </label>
+          <label for="message" class="text-sm font-medium text-gray-200">Message (Please do not put any Protected Health Information in this field) </label>
           <textarea id="message" name="message" rows="4" class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral"></textarea>
         </div>
         <button type="submit" class="w-full py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90 transition">Send Request</button>
@@ -40,9 +40,11 @@
     </div>
 
     <!-- MAP + INFO -->
-    <div class="reveal flex flex-col gap-6">
-      <iframe title="Practice location" loading="lazy" class="w-full h-80 rounded-2xl border-0 shadow-xl" allowfullscreen
-        src="https://www.google.com/maps/embed/v1/place?q=79+Mall+Rd+Ste+B+South+Williamson+KY+41503&key=YOUR_GOOGLE_MAPS_API_KEY">
+    <div class="reveal w-full h-[28rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+      <iframe class="w-full h-full" loading="lazy" allowfullscreen
+              title="Map to Duncan Family Dentistry"
+              src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503
+                   &t=&z=15&ie=UTF8&iwloc=&output=embed">
       </iframe>
       <div class="text-gray-100 text-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6">
         <p><strong class="text-coral">Address:</strong> 79 Mall Rd, Ste B, South Williamson, KY 41503</p>

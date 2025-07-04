@@ -6,55 +6,75 @@
   <title>{% block title %}Duncan Family Dentistry{% endblock %}</title>
   <meta name="description" content="Modern family dentistry in Belfry, KY – gentle care, dazzling smiles." />
 
-  <!-- Tailwind CSS (compiled) -->
+  <!-- Tailwind -->
   <link rel="stylesheet" href="{{ url_for('static', path='assets/site.css') }}" />
-
-  <!-- Alpine.js (tiny) -->
+  <!-- Alpine -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <!-- Moving gradient & styles -->
+  <!-- Animated gradient + helpers -->
   <style>
-    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(120deg,#001b44 0%,#003c95 25%,#007fa2 55%,#00b8b1 80%,#ff7360 100%);background-size:300% 300%;animation:gradientShift 90s ease infinite}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+      background:linear-gradient(120deg,#001b44 0%,#003c95 25%,#007fa2 55%,#00b8b1 80%,#ff7360 100%);
+      background-size:300% 300%;animation:gradientShift 90s ease infinite}
     @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 0);background-size:2px 2px;opacity:.05;pointer-events:none}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;
+      background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 0);
+      background-size:2px 2px;opacity:.05;pointer-events:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none}}
     .reveal{opacity:0}.revealed{animation:fadeUp .8s cubic-bezier(.23,1,.32,1) forwards}
-    .nav-glass{background:rgba(0,0,0,.55);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+    .nav-glass{background:rgba(0,0,0,.55);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.1)}
     .hc body::before,.hc body::after{display:none}
-    /* Page transition overlay */
     #page-transition{transition:opacity .25s ease;pointer-events:none}
   </style>
 </head>
-<body x-data="appState()" x-init="initReveal();initPageTransition()" :class="{'hc':highContrast}" class="font-sans antialiased min-h-screen flex flex-col text-gray-50 selection:bg-coral/70 selection:text-white">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 p-2 bg-brand text-white rounded-lg">Skip to content</a>
+<body x-data="appState()" x-init="initReveal();initPageTransition()"
+      :class="{'hc':highContrast}"
+      class="font-sans antialiased min-h-screen flex flex-col text-gray-50 selection:bg-coral/70 selection:text-white">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 p-2 bg-brand text-white rounded-lg">
+    Skip to content
+  </a>
 
   <!-- NAVBAR -->
   <header class="nav-glass sticky top-0 z-50" x-data="{open:false}">
     <div class="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
       <a href="/" class="text-lg sm:text-xl font-bold tracking-wide text-white">Duncan Family Dentistry</a>
+
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
         <a href="/" class="hover:text-coral">Home</a>
         <a href="/about" class="hover:text-coral">About</a>
         <a href="/services" class="hover:text-coral">Services</a>
         <a href="/new-patients" class="hover:text-coral">New Patients</a>
+        <a href="/location" class="hover:text-coral">Location</a>
         <a href="/contact" class="hover:text-coral">Contact</a>
       </nav>
-      <button @click="open=!open" class="md:hidden p-2 text-white hover:bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+
+      <!-- Hamburger -->
+      <button @click="open=!open"
+              class="md:hidden p-2 text-white hover:bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
       </button>
     </div>
+
+    <!-- Mobile drawer -->
     <div x-show="open" x-transition class="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
       <nav class="px-4 py-4 space-y-2 text-base font-medium">
         <a @click="open=false" href="/" class="block text-gray-100 hover:text-coral">Home</a>
         <a @click="open=false" href="/about" class="block text-gray-100 hover:text-coral">About</a>
         <a @click="open=false" href="/services" class="block text-gray-100 hover:text-coral">Services</a>
         <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
+        <a @click="open=false" href="/location" class="block text-gray-100 hover:text-coral">Location</a>
         <a @click="open=false" href="/contact" class="block text-gray-100 hover:text-coral">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main id="main" class="flex-1">{% block content %}{% endblock %}</main>
 
   <!-- FOOTER -->
@@ -62,18 +82,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Contact</h2>
-        <p>79 Mall Rd, Ste B<br>South Williamson, KY 41503</p>
-        <p class="mt-2">Phone: <a href="tel:+16062370073" class="underline">(606) 237-0073</a><br>Email: <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">info@duncanfamilydentistry.com</a></p>
+        <p>79 Mall Rd, Ste B<br>South Williamson, KY&nbsp;41503</p>
+        <p class="mt-2">Phone: <a href="tel:+16062370073" class="underline">(606) 237-0073</a><br>
+           Email: <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">info@duncanfamilydentistry.com</a></p>
       </div>
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Hours</h2>
-        <p>Mon–Thu 8 am – 5 pm<br>Fri 8 am – 5 pm (hygienist-only)</p>
+        <p>Mon–Thu 8 am–5 pm<br>Fri 8 am–5 pm (hygienist-only)</p>
       </div>
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
         <ul class="space-y-1">
           <li><a href="/services" class="underline hover:text-coral">Services</a></li>
           <li><a href="/new-patients" class="underline hover:text-coral">New Patients</a></li>
+          <li><a href="/location" class="underline hover:text-coral">Location</a></li>
           <li><a href="/privacy" class="underline hover:text-coral">Privacy</a></li>
         </ul>
       </div>
@@ -81,17 +103,29 @@
     <div class="text-center py-4 bg-black/60">© {{ now().year }} Duncan Family Dentistry.</div>
   </footer>
 
-  <!-- Scroll-to-top FAB -->
-  <button x-show="showTop" x-transition.opacity x-transition.scale.90 @click="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
+  <!-- Scroll-to-top -->
+  <button x-show="showTop"
+          x-transition.opacity x-transition.scale.90
+          @click="window.scrollTo({top:0,behavior:'smooth'})"
+          class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
 
-  <!-- Page Transition Overlay -->
+  <!-- Page-transition overlay -->
   <div id="page-transition" class="fixed inset-0 bg-black opacity-0 z-50"></div>
 
-  <!-- Alpine utilities -->
   <script>
-    function appState(){return{highContrast:false,fontSize:16,showTop:false,init(){document.documentElement.style.fontSize=this.fontSize+'px';window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);}}}
-    function initReveal(){const o=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('revealed');o.unobserve(t.target);}})},{threshold:.15});document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
-    function initPageTransition(){const overlay=document.getElementById('page-transition');window.addEventListener('pageshow',()=>{overlay.style.opacity=0;});document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])').forEach(a=>{a.addEventListener('click',e=>{if(a.href.startsWith(window.location.origin)){e.preventDefault();overlay.style.opacity=1;setTimeout(()=>{window.location=a.href;},250);}});});}
+    /* Alpine helpers (unchanged) */
+    function appState(){return{highContrast:false,fontSize:16,showTop:false,
+      init(){document.documentElement.style.fontSize=this.fontSize+'px';
+            window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);}}}
+    function initReveal(){const o=new IntersectionObserver(e=>{
+      e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('revealed');o.unobserve(t.target);}})},{threshold:.15});
+      document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
+    function initPageTransition(){const overlay=document.getElementById('page-transition');
+      window.addEventListener('pageshow',()=>{overlay.style.opacity=0});
+      document.querySelectorAll('a[href]:not([target]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])')
+        .forEach(a=>a.addEventListener('click',e=>{
+          if(a.href.startsWith(window.location.origin)){e.preventDefault();
+            overlay.style.opacity=1;setTimeout(()=>window.location=a.href,250);}}));}
   </script>
 </body>
 </html>
