@@ -9,56 +9,23 @@
   <!-- Tailwind CSS (compiled) -->
   <link rel="stylesheet" href="{{ url_for('static', path='assets/site.css') }}" />
 
-  <!-- Alpine.js (tiny JS) -->
+  <!-- Alpine.js (tiny) -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  <!-- Moving gradient background & aesthetic tweaks -->
+  <!-- Moving gradient & styles -->
   <style>
-    /* Full‑page ultra‑slow animated gradient (90s loop) */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      background: linear-gradient(120deg,#001b44 0%,#003c95 25%,#007fa2 55%,#00b8b1 80%,#ff7360 100%);
-      background-size: 300% 300%;
-      animation: gradientShift 90s ease infinite;
-    }
-    @keyframes gradientShift {
-      0%,100% { background-position: 0% 50%; }
-      50%     { background-position: 100% 50%; }
-    }
-
-    /* Subtle star‑field overlay for depth */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 0);
-      background-size: 2px 2px;
-      opacity: .05;
-      pointer-events: none;
-    }
-
-    /* Reveal‑on‑scroll */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
-    .reveal { opacity:0; }
-    .revealed { animation: fadeUp .8s cubic-bezier(.23,1,.32,1) forwards; }
-
-    /* Sticky nav contrast */
-    .nav-glass {
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-
-    .hc body::before,
-    .hc body::after { display:none; }
+    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(120deg,#001b44 0%,#003c95 25%,#007fa2 55%,#00b8b1 80%,#ff7360 100%);background-size:300% 300%;animation:gradientShift 90s ease infinite}
+    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 0);background-size:2px 2px;opacity:.05;pointer-events:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+    .reveal{opacity:0}.revealed{animation:fadeUp .8s cubic-bezier(.23,1,.32,1) forwards}
+    .nav-glass{background:rgba(0,0,0,.55);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+    .hc body::before,.hc body::after{display:none}
+    /* Page transition overlay */
+    #page-transition{transition:opacity .25s ease;pointer-events:none}
   </style>
 </head>
-<body x-data="appState()" x-init="initReveal()" :class="{'hc':highContrast}" class="font-sans antialiased min-h-screen flex flex-col text-gray-50 selection:bg-coral/70 selection:text-white">
+<body x-data="appState()" x-init="initReveal();initPageTransition()" :class="{'hc':highContrast}" class="font-sans antialiased min-h-screen flex flex-col text-gray-50 selection:bg-coral/70 selection:text-white">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 p-2 bg-brand text-white rounded-lg">Skip to content</a>
 
   <!-- NAVBAR -->
@@ -70,7 +37,6 @@
         <a href="/about" class="hover:text-coral">About</a>
         <a href="/services" class="hover:text-coral">Services</a>
         <a href="/new-patients" class="hover:text-coral">New Patients</a>
-        <a href="/gallery" class="hover:text-coral">Gallery</a>
         <a href="/contact" class="hover:text-coral">Contact</a>
       </nav>
       <button @click="open=!open" class="md:hidden p-2 text-white hover:bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
@@ -83,7 +49,6 @@
         <a @click="open=false" href="/about" class="block text-gray-100 hover:text-coral">About</a>
         <a @click="open=false" href="/services" class="block text-gray-100 hover:text-coral">Services</a>
         <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
-        <a @click="open=false" href="/gallery" class="block text-gray-100 hover:text-coral">Gallery</a>
         <a @click="open=false" href="/contact" class="block text-gray-100 hover:text-coral">Contact</a>
       </nav>
     </div>
@@ -92,7 +57,7 @@
   <!-- MAIN -->
   <main id="main" class="flex-1">{% block content %}{% endblock %}</main>
 
-  <!-- FOOTER (glass) -->
+  <!-- FOOTER -->
   <footer class="nav-glass mt-24 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
       <div>
@@ -102,7 +67,7 @@
       </div>
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Hours</h2>
-        <p>Mon–Thu 8 am – 5 pm<br>Fri 8 am – 5 pm (hygienist‑only)</p>
+        <p>Mon–Thu 8 am – 5 pm<br>Fri 8 am – 5 pm (hygienist-only)</p>
       </div>
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
@@ -116,30 +81,17 @@
     <div class="text-center py-4 bg-black/60">© {{ now().year }} Duncan Family Dentistry.</div>
   </footer>
 
-  <!-- Scroll‑to‑top FAB -->
-  <button x-show="showTop" x-transition.opacity x-transition.scale.75 @click="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
+  <!-- Scroll-to-top FAB -->
+  <button x-show="showTop" x-transition.opacity x-transition.scale.90 @click="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
+
+  <!-- Page Transition Overlay -->
+  <div id="page-transition" class="fixed inset-0 bg-black opacity-0 z-50"></div>
 
   <!-- Alpine utilities -->
   <script>
-    function appState() {
-      return {
-        highContrast:false, fontSize:16, showTop:false,
-        init(){
-          const root=document.documentElement;
-          root.style.fontSize=this.fontSize+'px';
-          window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);
-        },
-      };
-    }
-    // Intersection reveal – once globally
-    function initReveal(){
-      const obs=new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); obs.unobserve(e.target);} })
-      },{threshold:0.15});
-      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-    }
+    function appState(){return{highContrast:false,fontSize:16,showTop:false,init(){document.documentElement.style.fontSize=this.fontSize+'px';window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);}}}
+    function initReveal(){const o=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('revealed');o.unobserve(t.target);}})},{threshold:.15});document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
+    function initPageTransition(){const overlay=document.getElementById('page-transition');window.addEventListener('pageshow',()=>{overlay.style.opacity=0;});document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])').forEach(a=>{a.addEventListener('click',e=>{if(a.href.startsWith(window.location.origin)){e.preventDefault();overlay.style.opacity=1;setTimeout(()=>{window.location=a.href;},250);}});});}
   </script>
-
-  <!-- Live Chat placeholder -->
 </body>
 </html>

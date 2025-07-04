@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}New Patients – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Welcome, New Patients!</h1>
+</section>
+
+<!-- HOW IT WORKS TIMELINE -->
+<section class="py-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="reveal text-3xl font-bold text-center text-white mb-12">Your First Visit – Four Easy Steps</h2>
+    <ol class="relative border-l-2 border-coral space-y-10">
+      {% set steps=[
+        {'title':'Download & Complete Forms','desc':'Fill out our new‑patient packet at your convenience to save time in the office.'},
+        {'title':'Insurance Verification','desc':'Email or bring your card—our team confirms benefits before your appointment.'},
+        {'title':'Comprehensive Exam & X‑Rays','desc':'Digital panoramic imaging and a gentle exam let us get the full picture.'},
+        {'title':'Personalized Treatment Plan','desc':'We review findings, answer questions, and map out next steps together.'},
+      ] %}
+      {% for s in steps %}
+      <li class="ml-6 reveal flex gap-6 items-start">
+        <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border-2 border-coral text-coral font-bold">{{ loop.index }}</span>
+        <div>
+          <h3 class="text-xl font-semibold text-white">{{ s.title }}</h3>
+          <p class="text-gray-200 mt-1">{{ s.desc }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- PDF VIEWER & DOWNLOAD -->
+<section class="py-24 bg-white/10 backdrop-blur-md border-y border-white/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-start" x-data="{page:1,total:12}">
+    <!-- Embedded PDF -->
+    <div class="reveal w-full h-[32rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+      <iframe :src="'/static/forms/Newpatientpacket.pdf#page='+page" class="w-full h-full" title="New Patient Packet"></iframe>
+    </div>
+
+    <!-- Controls & Download -->
+    <div class="reveal space-y-8">
+      <h2 class="text-3xl font-bold text-coral">New‑Patient Packet</h2>
+      <p class="text-gray-100">Our 12‑page PDF covers medical history, consent, and HIPAA privacy. Complete it at home or on any device, then email it to us—or bring a printed copy to your first visit.</p>
+
+      <!-- Page navigation -->
+      <div class="flex items-center gap-4">
+        <button @click="page=Math.max(1,page-1)" class="p-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40" :disabled="page===1">Prev</button>
+        <span class="text-gray-200">Page <span x-text="page"></span> / <span x-text="total"></span></span>
+        <button @click="page=Math.min(total,page+1)" class="p-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40" :disabled="page===total">Next</button>
+      </div>
+
+      <a href="/static/forms/Newpatientpacket.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l4-4h-3V4h-2v8H8l4 4zm8 2H4v2h16v-2z"/></svg>
+        Download Full Packet (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Services – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO BANNER -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Our Services</h1>
+</section>
+
+<!-- SERVICE CATEGORIES -->
+<section class="py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+    <!-- PREVENTIVE -->
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl order-last lg:order-first">
+        <h2 class="text-3xl font-bold text-coral mb-4">Preventive Care</h2>
+        <p class="text-gray-100 mb-6">Routine visits keep oral problems small—and affordable. Our preventive suite covers:</p>
+        <ul class="list-disc list-inside text-gray-100 space-y-2">
+          <li>Comprehensive exams &amp; cleanings</li>
+          <li>Digital panoramic X‑rays</li>
+          <li>Fluoride &amp; sealants</li>
+          <li>Oral cancer screening</li>
+        </ul>
+      </div>
+      <img src="{{ url_for('static', path='img/preventive.jpg') }}" alt="Preventive dentistry" class="reveal w-full h-72 object-cover rounded-2xl shadow-xl" />
+    </div>
+
+    <!-- RESTORATIVE -->
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <img src="{{ url_for('static', path='img/restorative.jpg') }}" alt="Restorative dentistry" class="reveal w-full h-72 object-cover rounded-2xl shadow-xl" />
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl">
+        <h2 class="text-3xl font-bold text-coral mb-4">Restorative Dentistry</h2>
+        <p class="text-gray-100 mb-6">From tiny fillings to full‑coverage crowns, we rebuild teeth to look—and feel—like new.</p>
+        <ul class="list-disc list-inside text-gray-100 space-y-2">
+          <li>Tooth‑colored fillings</li>
+          <li>Crowns &amp; bridges</li>
+          <li>Root canal therapy</li>
+          <li>Partials &amp; dentures</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COSMETIC -->
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl order-last lg:order-first">
+        <h2 class="text-3xl font-bold text-coral mb-4">Cosmetic Dentistry</h2>
+        <p class="text-gray-100 mb-6">Small tweaks, big confidence. Ask us how we can make your smile camera‑ready:</p>
+        <ul class="list-disc list-inside text-gray-100 space-y-2">
+          <li>Professional whitening (in‑office &amp; take‑home)</li>
+          <li>Bonding &amp; re‑contouring</li>
+          <li>Porcelain veneers</li>
+          <li>Invisalign&reg; aligner therapy <span class="italic text-sm">(coming soon)</span></li>
+        </ul>
+      </div>
+      <img src="{{ url_for('static', path='img/cosmetic.jpg') }}" alt="Cosmetic dentistry" class="reveal w-full h-72 object-cover rounded-2xl shadow-xl" />
+    </div>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-24 bg-white/10 backdrop-blur-md border-t border-white/20 text-center reveal">
+  <h2 class="text-3xl font-bold text-white">Ready for a healthier, brighter smile?</h2>
+  <p class="mt-3 text-gray-200">Book your visit today and discover how comfortable modern dentistry can be.</p>
+  <a href="/contact" class="inline-block mt-8 px-10 py-4 rounded-lg bg-coral text-white font-semibold hover:opacity-90 transform hover:-translate-y-0.5 transition">Request Appointment</a>
+</section>
+{% endblock %}

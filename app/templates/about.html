@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO BANNER -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Meet the Team</h1>
+</section>
+
+<!-- OUR STORY -->
+<section class="py-24">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <article class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl text-gray-100 space-y-6">
+      <h2 class="text-3xl font-bold text-coral">Our Story</h2>
+      <p>Duncan Family Dentistry has been proudly serving the Belfry and South Williamson communities for more than <strong>25&nbsp;years</strong>. Founded by <strong>Dr.&nbsp;Tiffany Duncan, DMD</strong>, our mission is simple: deliver state-of-the-art dental care with true hometown warmth. From one-chair beginnings to today’s modern clinic, we remain family‑owned and deeply rooted in the community we love.</p>
+      <p>We invest in the latest technology—from digital panoramic X-rays to intraoral scanners—so every visit is efficient, comfortable, and precise. Above all, we treat each patient like family, celebrating milestones and brightening smiles across generations.</p>
+    </article>
+  </div>
+</section>
+
+<!-- DR. DUNCAN PROFILE -->
+<section class="py-24 bg-white/10 backdrop-blur-md border-y border-white/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
+    <img src="{{ url_for('static', path='img/dr-duncan.jpg') }}" alt="Dr. Tiffany Duncan" class="reveal w-full h-80 object-cover rounded-2xl shadow-xl" />
+    <div class="reveal space-y-4">
+      <h2 class="text-3xl font-bold text-coral">Dr. Tiffany Duncan, DMD</h2>
+      <ul class="list-disc list-inside marker:text-coral text-gray-100">
+        <li><strong>Undergrad:</strong> B.S. Biology – Morehead State University</li>
+        <li><strong>DMD:</strong> University of Louisville (1999)</li>
+        <li><strong>GPR Residency:</strong> University of Louisville</li>
+        <li>25+ years in comprehensive family dentistry</li>
+        <li>Member: ADA, KDA</li>
+      </ul>
+      <p>Outside the operatory, Dr.&nbsp;Duncan enjoys beach travel, binge‑worthy TV, and spoiling her Yorkies—Dolly &amp; Diesel. She’s also proud mom to Brooke &amp; Emily, both pursuing biomedical science at the University of Pikeville.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY PHOTO SPLASH -->
+<section class="py-24">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <figure class="reveal overflow-hidden rounded-2xl shadow-2xl border border-white/20">
+      <img src="{{ url_for('static', path='forms/img/fam.jpg') }}" alt="Dr. Duncan with daughters Brooke and Emily" class="w-full h-auto sm:h-[28rem] object-contain sm:object-cover" />
+      <figcaption class="bg-black/60 backdrop-blur text-gray-100 text-sm py-3 text-center">Dr.&nbsp;Duncan with daughters <strong>Emily</strong> &amp; <strong>Brooke</strong> (Respectively) — the future generation of medical professionals.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- TEAM GRID -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="reveal text-3xl font-bold text-white mb-12">The Friendly Faces Behind Your Smile</h2>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {% set staff=[
+        {'name':'Trinity Queen','role':'Insurance Coordinator','years':'2 years','img':'trinity.jpg'},
+        {'name':'Tiffany Robinette','role':'Scheduling Coordinator','years':'2 years','img':'tiffany-r.jpg'},
+        {'name':'Marsha Whitt','role':'Dental Assistant','years':'2 years','img':'marsha.jpg'},
+        {'name':'Michelle Tackett, RDH','role':'Dental Hygienist','years':'1 year','img':'michelle.jpg'},
+        {'name':'Breanna Stevenson, RDH','role':'Dental Hygienist','years':'New hire','img':'breanna.jpg'},
+      ] %}
+      {% for m in staff %}
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 shadow-lg flex flex-col items-center hover:shadow-2xl transition-transform hover:-translate-y-1">
+        <img src="{{ url_for('static', path='img/' + m.img) }}" alt="{{m.name}}" class="w-28 h-28 object-cover rounded-full shadow mb-4" />
+        <h3 class="text-lg font-semibold text-white">{{m.name}}</h3>
+        <p class="text-coral text-sm">{{m.role}}</p>
+        <p class="text-gray-200 text-xs mt-1">{{m.years}} at DFD</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
