@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-
 {% block title %}Contact – Duncan Family Dentistry{% endblock %}
-
 {% block content %}
+
 <!-- CONTACT SECTION -->
 <section class="py-28">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2">
@@ -10,73 +9,80 @@
     <!-- CONTACT FORM CARD -->
     <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl">
       <h1 class="text-3xl font-bold text-white">Request an Appointment</h1>
-      <p class="mt-2 text-gray-200">Fill out the form and our front‑desk team will reach out soon. For a quicker response, please call us at <a href="tel:+16062370073" class="underline">(606) 237‑0073</a>. If you are having a medical emergency, please call <a href="tel:+1911" class="underline">911</a>.</p>
+      <p class="mt-2 text-gray-200">
+        Fill out the form and our front-desk team will reach out soon.
+        For a quicker response, please call
+        <a href="tel:+16062370073" class="underline">(606) 237-0073</a>.
+        If you are having a medical emergency, please dial
+        <a href="tel:911" class="underline">911</a>.
+      </p>
 
-      <form id="contactForm" class="mt-8 space-y-6" @submit.prevent="submitForm($event)">
+      <!-- ‼️  Formspree endpoint -->
+      <form action="https://formspree.io/f/xwpbjedr" method="POST" class="mt-8 space-y-6">
+
+        <!-- OPTIONAL hidden extras -->
+        <input type="hidden" name="_subject"   value="Website Appointment Request">
+        <input type="hidden" name="_redirect"  value="/thank-you-for-contacting-us!">   <!-- or omit for Formspree default -->
+        <input type="text"   name="_gotcha"    style="display:none"> <!-- honeypot spam trap -->
+
         <div class="grid sm:grid-cols-2 gap-6">
           <div class="flex flex-col">
             <label for="name" class="text-sm font-medium text-gray-200">Full Name *</label>
-            <input type="text" id="name" name="name" required class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral" />
+            <input type="text" id="name" name="name" required
+                   class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
           </div>
           <div class="flex flex-col">
             <label for="phone" class="text-sm font-medium text-gray-200">Phone *</label>
-            <input type="tel" id="phone" name="phone" required class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral" />
+            <input type="tel" id="phone" name="phone" required
+                   class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
           </div>
         </div>
+
         <div class="flex flex-col">
           <label for="email" class="text-sm font-medium text-gray-200">Email *</label>
-          <input type="email" id="email" name="email" required class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral" />
+          <input type="email" id="email" name="email" required
+                 class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
         </div>
+
         <div class="flex flex-col">
           <label for="preferred_date" class="text-sm font-medium text-gray-200">Preferred Date</label>
-          <input type="date" id="preferred_date" name="preferred_date" class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral" />
+          <input type="date" id="preferred_date" name="preferred_date"
+                 class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
         </div>
+
         <div class="flex flex-col">
-          <label for="message" class="text-sm font-medium text-gray-200">Message (Please do not put any Protected Health Information in this field) </label>
-          <textarea id="message" name="message" rows="4" class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral"></textarea>
+          <label for="message" class="text-sm font-medium text-gray-200">
+            Message <span class="text-xs">(Please do not include PHI)</span>
+          </label>
+          <textarea id="message" name="message" rows="4"
+                    class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral"></textarea>
         </div>
-        <button type="submit" class="w-full py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90 transition">Send Request</button>
+
+        <button type="submit"
+                class="w-full py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90 transition">
+          Send Request
+        </button>
       </form>
     </div>
 
     <!-- MAP + INFO -->
-    <div class="reveal w-full h-[28rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-      <iframe class="w-full h-full" loading="lazy" allowfullscreen
-              title="Map to Duncan Family Dentistry"
-              src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503
-                   &t=&z=15&ie=UTF8&iwloc=&output=embed">
-      </iframe>
+    <div class="reveal space-y-6">
+      <div class="w-full h-[28rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+        <iframe class="w-full h-full" loading="lazy" allowfullscreen
+                title="Map to Duncan Family Dentistry"
+                src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503&t=&z=15&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+      </div>
+
       <div class="text-gray-100 text-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6">
         <p><strong class="text-coral">Address:</strong> 79 Mall Rd, Ste B, South Williamson, KY 41503</p>
-        <p class="mt-2"><strong class="text-coral">Phone:</strong> <a href="tel:+16062370073" class="underline">(606) 237‑0073</a></p>
-        <p><strong class="text-coral">Email:</strong> <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">duncanfamilydentistry@gmail.com</a></p>
+        <p class="mt-2"><strong class="text-coral">Phone:</strong>
+           <a href="tel:+16062370073" class="underline">(606) 237-0073</a></p>
+        <p><strong class="text-coral">Email:</strong>
+           <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">duncanfamilydentistry@gmail.com</a></p>
       </div>
     </div>
+
   </div>
 </section>
-
-<!-- TOAST NOTIFICATION -->
-<div x-show="toast.show" x-transition.opacity x-transition.scale.90 class="fixed bottom-6 right-6 bg-white text-brand shadow-xl border-l-4 rounded-lg flex items-center px-6 py-4 space-x-3" x-data="toastStore()" @notify.window="trigger($event.detail)">
-  <svg x-show="toast.success" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg>
-  <svg x-show="!toast.success" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
-  <span class="text-sm font-medium" x-text="toast.message"></span>
-</div>
-
-<script>
-  function toastStore(){
-    return{ toast:{show:false,message:'',success:true},
-      trigger({message,success}){ this.toast={show:true,message,success}; setTimeout(()=>this.toast.show=false,5000);} }
-  }
-  async function submitForm(e){
-    const f=e.target, data=Object.fromEntries(new FormData(f));
-    try{
-      const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      const json=await res.json();
-      window.dispatchEvent(new CustomEvent('notify',{detail:{message:json.message,success:json.success}}));
-      if(json.success) f.reset();
-    }catch(err){
-      window.dispatchEvent(new CustomEvent('notify',{detail:{message:'Network error. Please call us!',success:false}}));
-    }
-  }
-</script>
 {% endblock %}
