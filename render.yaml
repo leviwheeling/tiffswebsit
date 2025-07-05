@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: dfd-site
+    env: python
+    plan: free          # or starter for more RAM
+    region: oregon
+
+    buildCommand: |
+      # 1. Build Tailwind (Node)
+      npm ci
+      npm run build
+
+      # 2. Install Python deps
+      pip install -r requirements.txt
+
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
+    autoDeploy: true

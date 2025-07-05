@@ -1,7 +1,10 @@
 {
-    "scripts": {
-      "dev:css": "tailwindcss -i ./app/input.css -o ./app/static/assets/site.css --watch",
-      "build:css": "tailwindcss -i ./app/input.css -o ./app/static/assets/site.css --minify"
-    }
+  "scripts": {
+    "build": "npx tailwindcss -i ./input.css -o ./app/static/assets/site.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
   }
-  
+}
