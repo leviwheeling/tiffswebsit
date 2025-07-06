@@ -7,30 +7,23 @@
   <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
 </section>
 
-<!-- SEARCH + MOSAIC -->
+<!-- MOSAIC -->
 <section class="py-24" x-data="insuranceStore()">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-    <!-- search bar -->
-    <div class="reveal flex justify-center">
-      <input x-model="query" type="text" placeholder="Type to filter plans…"
-             class="w-full sm:w-96 py-3 px-5 rounded-lg bg-white/80 text-gray-900
-                    focus:outline-none focus:ring-2 focus:ring-coral placeholder-gray-500">
-    </div>
-
-    <!-- mosaic grid -->
+    <!-- logo grid -->
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <template x-for="plan in filtered()" :key="plan.name">
+      <template x-for="plan in plans" :key="plan.name">
         <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
                     hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-          <!-- logo image -->
+          <!-- logo -->
           <img :src="'/static/forms/img/'+plan.logo"
                :alt="plan.name"
                class="h-12 object-contain mb-4"
                @error="hideImg($event)">
 
-          <!-- fallback badge (hidden until img fails) -->
+          <!-- fallback badge -->
           <div class="hidden h-12 w-12 mb-4 rounded-full flex items-center justify-center
                       text-base font-bold text-white bg-coral/80">
             <span x-text="plan.abbr"></span>
@@ -39,23 +32,6 @@
           <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
         </div>
       </template>
-      <p x-show="filtered().length===0" class="col-span-full text-center text-gray-200">
-        No matching plans – please call us!
-      </p>
-    </div>
-
-    <!-- full alphabetical accordion -->
-    <div class="reveal">
-      <details class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
-        <summary class="cursor-pointer font-semibold text-white text-lg">
-          See full alphabetical list
-        </summary>
-        <ul class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-gray-200 list-disc list-inside">
-          <template x-for="plan in plans" :key="plan.name+'-list'">
-            <li x-text="plan.name"></li>
-          </template>
-        </ul>
-      </details>
     </div>
 
     <!-- CTA -->
@@ -72,7 +48,6 @@
 <script>
 function insuranceStore(){
   return{
-    query:'',
     /* master list --------------------------------------------------------- */
     plans:[
       {name:'Aetna',                         logo:'aetna.svg'},
@@ -92,25 +67,18 @@ function insuranceStore(){
       {name:'Principal',                     logo:'principal.svg'},
       {name:'Sun Life',                      logo:'sunlife.svg'},
       {name:'United Concordia Dental',       logo:'united-concordia.svg'}
-    ].map(p=>({...p,abbr:getAbbr(p.name)})),   // add 2-letter abbreviation
-
-    /* computed ------------------------------------------------------------ */
-    filtered(){
-      if(!this.query) return this.plans;
-      const q=this.query.toLowerCase();
-      return this.plans.filter(p=>p.name.toLowerCase().includes(q));
-    }
+    ].map(p=>({...p,abbr:getAbbr(p.name)}))   // add 2-letter abbreviation
   }
 
   /* helpers --------------------------------------------------------------- */
   function getAbbr(name){
-    const words = name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2);
+    const words=name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2);
     return words.slice(0,2).map(w=>w[0]).join('').toUpperCase();
   }
 }
 function hideImg(ev){
-  ev.target.style.display='none';              // hide broken img
-  ev.target.nextElementSibling.classList.remove('hidden'); // show fallback badge
+  ev.target.style.display='none';                       // hide broken img
+  ev.target.nextElementSibling.classList.remove('hidden'); // show badge
 }
 </script>
 {% endblock %}
