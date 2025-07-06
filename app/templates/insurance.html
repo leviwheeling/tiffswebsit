@@ -34,27 +34,26 @@
 ] %}
 
 {% for name, logo in plans %}
-  {# build a 2-letter abbreviation safely #}
-  {% set words   = name.replace('(', '').replace(')', '').split() %}
-  {% set first   = words[0][0] if words|length > 0 else '' %}
-  {% set second  = words[1][0] if words|length > 1 else '' %}
-  {% set abbr    = (first ~ second)|upper %}
+  {% set words = name.replace('(', '').replace(')', '').split() %}
+  {% set abbr  = (words[0][0] ~ (words[1][0] if words|length > 1 else '')).upper() %}
 
   <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
               hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-    <!-- fallback badge -->
-    <div class="badge h-12 w-12 mb-4 rounded-full flex items-center justify-center
+    <!-- badge hidden by default -->
+    <div class="badge hidden h-12 w-12 mb-4 rounded-full flex items-center justify-center
                 text-base font-bold text-white bg-coral ring-1 ring-white/20">
       {{ abbr }}
     </div>
 
-    <!-- logo (hides badge once it loads) -->
+    <!-- logo image visible by default -->
     <img src="{{ url_for('static', path='forms/img/' + logo) }}"
          alt="{{ name }}"
-         class="h-12 object-contain mb-4 hidden"
-         onload="this.previousElementSibling.style.display='none'; this.classList.remove('hidden');"
-         onerror="this.style.display='none';">
+         class="h-12 object-contain mb-4"
+         onerror="
+           this.style.display='none';
+           this.previousElementSibling.classList.remove('hidden');
+         ">
 
     <span class="text-sm font-semibold text-white text-center">{{ name }}</span>
   </div>
