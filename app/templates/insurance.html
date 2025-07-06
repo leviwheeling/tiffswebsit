@@ -23,9 +23,19 @@
       <template x-for="plan in filtered()" :key="plan.name">
         <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
                     hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
+
+          <!-- logo image -->
           <img :src="'/static/forms/img/'+plan.logo"
                :alt="plan.name"
-               class="h-12 object-contain mb-4">
+               class="h-12 object-contain mb-4"
+               @error="hideImg($event)">
+
+          <!-- fallback badge (hidden until img fails) -->
+          <div class="hidden h-12 w-12 mb-4 rounded-full flex items-center justify-center
+                      text-base font-bold text-white bg-coral/80">
+            <span x-text="plan.abbr"></span>
+          </div>
+
           <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
         </div>
       </template>
@@ -63,6 +73,7 @@
 function insuranceStore(){
   return{
     query:'',
+    /* master list --------------------------------------------------------- */
     plans:[
       {name:'Aetna',                         logo:'aetna.svg'},
       {name:'Ameritas',                      logo:'ameritas.svg'},
@@ -81,13 +92,25 @@ function insuranceStore(){
       {name:'Principal',                     logo:'principal.svg'},
       {name:'Sun Life',                      logo:'sunlife.svg'},
       {name:'United Concordia Dental',       logo:'united-concordia.svg'}
-    ],
+    ].map(p=>({...p,abbr:getAbbr(p.name)})),   // add 2-letter abbreviation
+
+    /* computed ------------------------------------------------------------ */
     filtered(){
       if(!this.query) return this.plans;
       const q=this.query.toLowerCase();
       return this.plans.filter(p=>p.name.toLowerCase().includes(q));
     }
   }
+
+  /* helpers --------------------------------------------------------------- */
+  function getAbbr(name){
+    const words = name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2);
+    return words.slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  }
+}
+function hideImg(ev){
+  ev.target.style.display='none';              // hide broken img
+  ev.target.nextElementSibling.classList.remove('hidden'); // show fallback badge
 }
 </script>
 {% endblock %}
