@@ -22,8 +22,8 @@
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <template x-for="plan in filtered()" :key="plan.name">
         <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
-                    hover:shadow-xl transform hover:-translate-y-1 transition">
-          <img :src="'/static/img/insurance/'+plan.logo"
+                    hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
+          <img :src="'/static/forms/img/'+plan.logo"
                :alt="plan.name"
                class="h-12 object-contain mb-4">
           <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
@@ -34,7 +34,7 @@
       </p>
     </div>
 
-    <!-- grouped list accordion -->
+    <!-- full alphabetical accordion -->
     <div class="reveal">
       <details class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
         <summary class="cursor-pointer font-semibold text-white text-lg">
@@ -82,9 +82,11 @@ function insuranceStore(){
       {name:'Sun Life',                      logo:'sunlife.svg'},
       {name:'United Concordia Dental',       logo:'united-concordia.svg'}
     ],
-    filtered(){ if(!this.query) return this.plans;
-                const q=this.query.toLowerCase();
-                return this.plans.filter(p=>p.name.toLowerCase().includes(q)); }
+    filtered(){
+      if(!this.query) return this.plans;
+      const q=this.query.toLowerCase();
+      return this.plans.filter(p=>p.name.toLowerCase().includes(q));
+    }
   }
 }
 </script>
