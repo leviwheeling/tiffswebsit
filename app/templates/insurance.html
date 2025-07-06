@@ -2,74 +2,65 @@
 {% block title %}Insurance – Duncan Family Dentistry{% endblock %}
 {% block content %}
 
-<!-- HERO -->
+<!-- HERO (no reveal class → always visible) -->
 <section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
-  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
+  <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
 </section>
 
-<!-- LOGO GRID -->
-<section class="py-24" x-data="insuranceGrid()">
+<!-- LOGO GRID (pure HTML) -->
+<section class="py-24">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <template x-for="plan in plans" :key="plan.name">
-        <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
-                    hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-          <!-- fallback badge (visible by default) -->
-          <div class="badge h-12 w-12 mb-4 rounded-full flex items-center justify-center
-                      text-base font-bold text-white bg-coral/80"
-               x-text="plan.abbr"></div>
+      {% set plans = [
+        ('Aetna',                         'aetna.svg'),
+        ('Ameritas',                      'ameritas.svg'),
+        ('Anthem (BlueCross BlueShield)', 'anthem.svg'),
+        ('BlueCross BlueShield FEP',      'bcbs-fep.svg'),
+        ('BlueCross BlueShield of TN',    'bcbs-tn.svg'),
+        ('Cigna',                         'cigna.svg'),
+        ('Delta Dental',                  'delta.svg'),
+        ('Highmark BlueCross BlueShield', 'highmark.svg'),
+        ('Humana',                        'humana.svg'),
+        ('Humana Medicare Advantage',     'humana-ma.svg'),
+        ('Liberty Dental Plan',           'liberty.svg'),
+        ('Lincoln Financial Group',       'lincoln.svg'),
+        ('MetLife',                       'metlife.svg'),
+        ('PEIA West Virginia',            'peia.svg'),
+        ('Principal',                     'principal.svg'),
+        ('Sun Life',                      'sunlife.svg'),
+        ('United Concordia Dental',       'united-concordia.svg')
+      ] %}
 
-          <!-- logo image -->
-          <img :src="'/static/forms/img/'+plan.logo"
-               :alt="plan.name"
-               class="h-12 object-contain mb-4 hidden"
-               @load="$el.previousElementSibling.classList.add('hidden'); $el.classList.remove('hidden');">
+      {% for name,logo in plans %}
+      {% set abbr = (name.replace('(', '').split()[0][0] + name.split()|last[0]).upper() %}
+      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
+                  hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-          <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
+        <div class="h-12 w-12 mb-4 rounded-full flex items-center justify-center text-base font-bold text-white
+                    bg-coral ring-1 ring-white/20">
+          {{ abbr }}
         </div>
-      </template>
+
+        <img src="{{ url_for('static', path='forms/img/' + logo) }}"
+             alt="{{ name }}"
+             class="h-12 object-contain mb-4"
+             onerror="this.style.display='none';this.previousElementSibling.style.display='flex';"
+             onload="this.previousElementSibling.style.display='none';">
+
+        <span class="text-sm font-semibold text-white text-center">{{ name }}</span>
+      </div>
+      {% endfor %}
+
     </div>
 
     <!-- CTA -->
-    <p class="reveal mt-12 text-center text-gray-100">
+    <p class="mt-12 text-center text-gray-100">
       Don’t see your carrier? We may still be able to help. Call
       <a href="tel:+16062370073" class="underline text-coral">(606) 237-0073</a>
       and we’ll verify your benefits.
     </p>
   </div>
 </section>
-
-<script>
-function insuranceGrid(){
-  const raw = [
-    ['Aetna',                         'aetna.svg'],
-    ['Ameritas',                      'ameritas.svg'],
-    ['Anthem (BlueCross BlueShield)', 'anthem.svg'],
-    ['BlueCross BlueShield FEP',      'bcbs-fep.svg'],
-    ['BlueCross BlueShield of TN',    'bcbs-tn.svg'],
-    ['Cigna',                         'cigna.svg'],
-    ['Delta Dental',                  'delta.svg'],
-    ['Highmark BlueCross BlueShield', 'highmark.svg'],
-    ['Humana',                        'humana.svg'],
-    ['Humana Medicare Advantage',     'humana-ma.svg'],
-    ['Liberty Dental Plan',           'liberty.svg'],
-    ['Lincoln Financial Group',       'lincoln.svg'],
-    ['MetLife',                       'metlife.svg'],
-    ['PEIA West Virginia',            'peia.svg'],
-    ['Principal',                     'principal.svg'],
-    ['Sun Life',                      'sunlife.svg'],
-    ['United Concordia Dental',       'united-concordia.svg']
-  ];
-
-  return{
-    plans: raw.map(([name,logo]) => ({
-      name,
-      logo,
-      abbr: name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join('').toUpperCase()
-    }))
-  }
-}
-</script>
 {% endblock %}
