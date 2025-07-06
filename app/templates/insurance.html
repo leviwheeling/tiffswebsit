@@ -7,27 +7,25 @@
   <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
 </section>
 
-<!-- MOSAIC -->
-<section class="py-24" x-data="insuranceStore()">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+<!-- LOGO GRID -->
+<section class="py-24" x-data="insuranceGrid()">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- logo grid -->
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <template x-for="plan in plans" :key="plan.name">
         <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
                     hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-          <!-- logo -->
+          <!-- fallback badge (visible by default) -->
+          <div class="badge h-12 w-12 mb-4 rounded-full flex items-center justify-center
+                      text-base font-bold text-white bg-coral/80"
+               x-text="plan.abbr"></div>
+
+          <!-- logo image -->
           <img :src="'/static/forms/img/'+plan.logo"
                :alt="plan.name"
-               class="h-12 object-contain mb-4"
-               @error="hideImg($event)">
-
-          <!-- fallback badge -->
-          <div class="hidden h-12 w-12 mb-4 rounded-full flex items-center justify-center
-                      text-base font-bold text-white bg-coral/80">
-            <span x-text="plan.abbr"></span>
-          </div>
+               class="h-12 object-contain mb-4 hidden"
+               @load="$el.previousElementSibling.classList.add('hidden'); $el.classList.remove('hidden');">
 
           <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
         </div>
@@ -35,50 +33,43 @@
     </div>
 
     <!-- CTA -->
-    <div class="reveal text-center">
-      <p class="text-gray-100">
-        Don’t see your carrier? We may still be able to help. Call
-        <a href="tel:+16062370073" class="underline text-coral">(606) 237-0073</a>
-        and we’ll verify your benefits.
-      </p>
-    </div>
+    <p class="reveal mt-12 text-center text-gray-100">
+      Don’t see your carrier? We may still be able to help. Call
+      <a href="tel:+16062370073" class="underline text-coral">(606) 237-0073</a>
+      and we’ll verify your benefits.
+    </p>
   </div>
 </section>
 
 <script>
-function insuranceStore(){
-  return{
-    /* master list --------------------------------------------------------- */
-    plans:[
-      {name:'Aetna',                         logo:'aetna.svg'},
-      {name:'Ameritas',                      logo:'ameritas.svg'},
-      {name:'Anthem (BlueCross BlueShield)', logo:'anthem.svg'},
-      {name:'BlueCross BlueShield FEP',      logo:'bcbs-fep.svg'},
-      {name:'BlueCross BlueShield of TN',    logo:'bcbs-tn.svg'},
-      {name:'Cigna',                         logo:'cigna.svg'},
-      {name:'Delta Dental',                  logo:'delta.svg'},
-      {name:'Highmark BlueCross BlueShield', logo:'highmark.svg'},
-      {name:'Humana',                        logo:'humana.svg'},
-      {name:'Humana Medicare Advantage',     logo:'humana-ma.svg'},
-      {name:'Liberty Dental Plan',           logo:'liberty.svg'},
-      {name:'Lincoln Financial Group',       logo:'lincoln.svg'},
-      {name:'MetLife',                       logo:'metlife.svg'},
-      {name:'PEIA West Virginia',            logo:'peia.svg'},
-      {name:'Principal',                     logo:'principal.svg'},
-      {name:'Sun Life',                      logo:'sunlife.svg'},
-      {name:'United Concordia Dental',       logo:'united-concordia.svg'}
-    ].map(p=>({...p,abbr:getAbbr(p.name)}))   // add 2-letter abbreviation
-  }
+function insuranceGrid(){
+  const raw = [
+    ['Aetna',                         'aetna.svg'],
+    ['Ameritas',                      'ameritas.svg'],
+    ['Anthem (BlueCross BlueShield)', 'anthem.svg'],
+    ['BlueCross BlueShield FEP',      'bcbs-fep.svg'],
+    ['BlueCross BlueShield of TN',    'bcbs-tn.svg'],
+    ['Cigna',                         'cigna.svg'],
+    ['Delta Dental',                  'delta.svg'],
+    ['Highmark BlueCross BlueShield', 'highmark.svg'],
+    ['Humana',                        'humana.svg'],
+    ['Humana Medicare Advantage',     'humana-ma.svg'],
+    ['Liberty Dental Plan',           'liberty.svg'],
+    ['Lincoln Financial Group',       'lincoln.svg'],
+    ['MetLife',                       'metlife.svg'],
+    ['PEIA West Virginia',            'peia.svg'],
+    ['Principal',                     'principal.svg'],
+    ['Sun Life',                      'sunlife.svg'],
+    ['United Concordia Dental',       'united-concordia.svg']
+  ];
 
-  /* helpers --------------------------------------------------------------- */
-  function getAbbr(name){
-    const words=name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2);
-    return words.slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  return{
+    plans: raw.map(([name,logo]) => ({
+      name,
+      logo,
+      abbr: name.replace(/[(].*?[)]/g,'').split(/\s+/).filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join('').toUpperCase()
+    }))
   }
-}
-function hideImg(ev){
-  ev.target.style.display='none';                       // hide broken img
-  ev.target.nextElementSibling.classList.remove('hidden'); // show badge
 }
 </script>
 {% endblock %}
