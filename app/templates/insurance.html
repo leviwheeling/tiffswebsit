@@ -2,43 +2,44 @@
 {% block title %}Insurance – Duncan Family Dentistry{% endblock %}
 {% block content %}
 
-<!-- HERO -->
 <section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
   <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
 </section>
 
-<!-- LOGO GRID -->
 <section class="py-24">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
+{# ------------------------------------------------------------------ #}
 {% set plans = [
-  ('Aetna',                         'aetna.png'),
-  ('Ameritas',                      'ameritas.png'),
-  ('Anthem (BlueCross BlueShield)', 'anthem.png'),
-  ('BlueCross BlueShield FEP',      'bcbs-fep.png'),
-  ('BlueCross BlueShield of TN',    'bcbs-tn.png'),
-  ('Cigna',                         'cigna.png'),
-  ('Delta Dental',                  'delta.png'),
-  ('Highmark BlueCross BlueShield', 'highmark.png'),
-  ('Humana',                        'humana.png'),
-  ('Humana Medicare Advantage',     'humana-ma.png'),
-  ('Liberty Dental Plan',           'liberty.png'),
-  ('Lincoln Financial Group',       'lincoln.png'),
-  ('MetLife',                       'metlife.png'),
-  ('PEIA West Virginia',            'peia.png'),
-  ('Principal',                     'principal.png'),
-  ('Sun Life',                      'sunlife.png'),
-  ('United Concordia Dental',       'united-concordia.png')
+  ('Aetna',                         'aetna.svg',           'https://www.aetna.com'),
+  ('Ameritas',                      'ameritas.svg',        'https://www.ameritas.com'),
+  ('Anthem (BlueCross BlueShield)', 'anthem.svg',          'https://www.anthem.com'),
+  ('BlueCross BlueShield FEP Dental','bcbs-fep.svg',       'https://www.fepbluedental.com'),
+  ('BlueCross BlueShield of TN',    'bcbs-tn.svg',         'https://www.bcbst.com'),
+  ('Cigna',                         'cigna.svg',           'https://www.cigna.com'),
+  ('Delta Dental',                  'delta.svg',           'https://www.deltadental.com'),
+  ('Highmark BlueCross BlueShield', 'highmark.svg',        'https://www.highmark.com'),
+  ('Humana',                        'humana.svg',          'https://www.humana.com'),
+  ('Humana Medicare Advantage',     'humana-ma.svg',       'https://www.humana.com/medicare'),
+  ('Liberty Dental Plan',           'liberty.svg',         'https://www.libertydentalplan.com'),
+  ('Lincoln Financial Group',       'lincoln.svg',         'https://www.lfg.com'),
+  ('MetLife',                       'metlife.svg',         'https://www.metlife.com'),
+  ('PEIA West Virginia',            'peia.svg',            'https://peia.wv.gov'),
+  ('Principal',                     'principal.svg',       'https://www.principal.com'),
+  ('Sun Life',                      'sunlife.svg',         'https://www.sunlife.com/us'),
+  ('United Concordia Dental',       'united-concordia.svg','https://www.unitedconcordia.com')
 ] %}
+{# ------------------------------------------------------------------ #}
 
-{% for name, logo in plans %}
+{% for name, logo, url in plans %}
   {% set words = name.replace('(', '').replace(')', '').split() %}
   {% set abbr  = (words[0][0] ~ (words[1][0] if words|length > 1 else '')).upper() %}
 
-  <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
-              hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
+  <a href="{{ url }}" target="_blank" rel="noopener"
+     class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
+            hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
     <!-- badge hidden by default -->
     <div class="badge hidden h-12 w-12 mb-4 rounded-full flex items-center justify-center
@@ -46,7 +47,7 @@
       {{ abbr }}
     </div>
 
-    <!-- logo image visible by default -->
+    <!-- logo -->
     <img src="{{ url_for('static', path='forms/img/' + logo) }}"
          alt="{{ name }}"
          class="h-12 object-contain mb-4"
@@ -56,7 +57,7 @@
          ">
 
     <span class="text-sm font-semibold text-white text-center">{{ name }}</span>
-  </div>
+  </a>
 {% endfor %}
 
     </div>
