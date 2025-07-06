@@ -43,12 +43,13 @@
 
       <!-- Desktop nav -->
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="/" class="hover:text-coral">Home</a>
-        <a href="/about" class="hover:text-coral">About</a>
-        <a href="/services" class="hover:text-coral">Services</a>
+        <a href="/"             class="hover:text-coral">Home</a>
+        <a href="/about"        class="hover:text-coral">About</a>
+        <a href="/services"     class="hover:text-coral">Services</a>
+        <a href="/insurance"    class="hover:text-coral">Insurance</a><!-- NEW -->
         <a href="/new-patients" class="hover:text-coral">New Patients</a>
-        <a href="/location" class="hover:text-coral">Location</a>
-        <a href="/contact" class="hover:text-coral">Contact</a>
+        <a href="/location"     class="hover:text-coral">Location</a>
+        <a href="/contact"      class="hover:text-coral">Contact</a>
       </nav>
 
       <!-- Hamburger -->
@@ -65,12 +66,13 @@
     <!-- Mobile drawer -->
     <div x-show="open" x-transition class="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
       <nav class="px-4 py-4 space-y-2 text-base font-medium">
-        <a @click="open=false" href="/" class="block text-gray-100 hover:text-coral">Home</a>
-        <a @click="open=false" href="/about" class="block text-gray-100 hover:text-coral">About</a>
-        <a @click="open=false" href="/services" class="block text-gray-100 hover:text-coral">Services</a>
+        <a @click="open=false" href="/"             class="block text-gray-100 hover:text-coral">Home</a>
+        <a @click="open=false" href="/about"        class="block text-gray-100 hover:text-coral">About</a>
+        <a @click="open=false" href="/services"     class="block text-gray-100 hover:text-coral">Services</a>
+        <a @click="open=false" href="/insurance"    class="block text-gray-100 hover:text-coral">Insurance</a><!-- NEW -->
         <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
-        <a @click="open=false" href="/location" class="block text-gray-100 hover:text-coral">Location</a>
-        <a @click="open=false" href="/contact" class="block text-gray-100 hover:text-coral">Contact</a>
+        <a @click="open=false" href="/location"     class="block text-gray-100 hover:text-coral">Location</a>
+        <a @click="open=false" href="/contact"      class="block text-gray-100 hover:text-coral">Contact</a>
       </nav>
     </div>
   </header>
@@ -93,10 +95,11 @@
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
         <ul class="space-y-1">
-          <li><a href="/services" class="underline hover:text-coral">Services</a></li>
-          <li><a href="/new-patients" class="underline hover:text-coral">New Patients</a></li>
-          <li><a href="/location" class="underline hover:text-coral">Location</a></li>
-          <li><a href="/privacy" class="underline hover:text-coral">Privacy</a></li>
+          <li><a href="/services"      class="underline hover:text-coral">Services</a></li>
+          <li><a href="/insurance"     class="underline hover:text-coral">Insurance</a></li><!-- NEW -->
+          <li><a href="/new-patients"  class="underline hover:text-coral">New Patients</a></li>
+          <li><a href="/location"      class="underline hover:text-coral">Location</a></li>
+          <li><a href="/privacy"       class="underline hover:text-coral">Privacy</a></li>
         </ul>
       </div>
     </div>

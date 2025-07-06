@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}Insurance – Duncan Family Dentistry{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
+</section>
+
+<!-- SEARCH + MOSAIC -->
+<section class="py-24" x-data="insuranceStore()">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+    <!-- search bar -->
+    <div class="reveal flex justify-center">
+      <input x-model="query" type="text" placeholder="Type to filter plans…"
+             class="w-full sm:w-96 py-3 px-5 rounded-lg bg-white/80 text-gray-900
+                    focus:outline-none focus:ring-2 focus:ring-coral placeholder-gray-500">
+    </div>
+
+    <!-- mosaic grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <template x-for="plan in filtered()" :key="plan.name">
+        <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
+                    hover:shadow-xl transform hover:-translate-y-1 transition">
+          <img :src="'/static/img/insurance/'+plan.logo"
+               :alt="plan.name"
+               class="h-12 object-contain mb-4">
+          <span class="text-sm font-semibold text-white text-center" x-text="plan.name"></span>
+        </div>
+      </template>
+      <p x-show="filtered().length===0" class="col-span-full text-center text-gray-200">
+        No matching plans – please call us!
+      </p>
+    </div>
+
+    <!-- grouped list accordion -->
+    <div class="reveal">
+      <details class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+        <summary class="cursor-pointer font-semibold text-white text-lg">
+          See full alphabetical list
+        </summary>
+        <ul class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-gray-200 list-disc list-inside">
+          <template x-for="plan in plans" :key="plan.name+'-list'">
+            <li x-text="plan.name"></li>
+          </template>
+        </ul>
+      </details>
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal text-center">
+      <p class="text-gray-100">
+        Don’t see your carrier? We may still be able to help. Call
+        <a href="tel:+16062370073" class="underline text-coral">(606) 237-0073</a>
+        and we’ll verify your benefits.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+function insuranceStore(){
+  return{
+    query:'',
+    plans:[
+      {name:'Aetna',                         logo:'aetna.svg'},
+      {name:'Ameritas',                      logo:'ameritas.svg'},
+      {name:'Anthem (BlueCross BlueShield)', logo:'anthem.svg'},
+      {name:'BlueCross BlueShield FEP',      logo:'bcbs-fep.svg'},
+      {name:'BlueCross BlueShield of TN',    logo:'bcbs-tn.svg'},
+      {name:'Cigna',                         logo:'cigna.svg'},
+      {name:'Delta Dental',                  logo:'delta.svg'},
+      {name:'Highmark BlueCross BlueShield', logo:'highmark.svg'},
+      {name:'Humana',                        logo:'humana.svg'},
+      {name:'Humana Medicare Advantage',     logo:'humana-ma.svg'},
+      {name:'Liberty Dental Plan',           logo:'liberty.svg'},
+      {name:'Lincoln Financial Group',       logo:'lincoln.svg'},
+      {name:'MetLife',                       logo:'metlife.svg'},
+      {name:'PEIA West Virginia',            logo:'peia.svg'},
+      {name:'Principal',                     logo:'principal.svg'},
+      {name:'Sun Life',                      logo:'sunlife.svg'},
+      {name:'United Concordia Dental',       logo:'united-concordia.svg'}
+    ],
+    filtered(){ if(!this.query) return this.plans;
+                const q=this.query.toLowerCase();
+                return this.plans.filter(p=>p.name.toLowerCase().includes(q)); }
+  }
+}
+</script>
+{% endblock %}

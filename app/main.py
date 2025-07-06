@@ -28,6 +28,11 @@ async def about(request: Request):
 async def services(request: Request):
     return templates.TemplateResponse("services.html", {"request": request})
 
+@app.get("/insurance", include_in_schema=False)
+async def insurance(request: Request):
+    return templates.TemplateResponse("insurance.html", {"request": request})
+
+
 @app.get("/new-patients", include_in_schema=False)
 @app.get("/new_patients", include_in_schema=False)
 async def new_patients(request: Request):
