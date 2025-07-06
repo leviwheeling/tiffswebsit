@@ -2,62 +2,68 @@
 {% block title %}Insurance – Duncan Family Dentistry{% endblock %}
 {% block content %}
 
-<!-- HERO (no reveal class → always visible) -->
+<!-- HERO -->
 <section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
   <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Accepted Insurance Plans</h1>
 </section>
 
-<!-- LOGO GRID (pure HTML) -->
+<!-- LOGO GRID -->
 <section class="py-24">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-      {% set plans = [
-        ('Aetna',                         'aetna.svg'),
-        ('Ameritas',                      'ameritas.svg'),
-        ('Anthem (BlueCross BlueShield)', 'anthem.svg'),
-        ('BlueCross BlueShield FEP',      'bcbs-fep.svg'),
-        ('BlueCross BlueShield of TN',    'bcbs-tn.svg'),
-        ('Cigna',                         'cigna.svg'),
-        ('Delta Dental',                  'delta.svg'),
-        ('Highmark BlueCross BlueShield', 'highmark.svg'),
-        ('Humana',                        'humana.svg'),
-        ('Humana Medicare Advantage',     'humana-ma.svg'),
-        ('Liberty Dental Plan',           'liberty.svg'),
-        ('Lincoln Financial Group',       'lincoln.svg'),
-        ('MetLife',                       'metlife.svg'),
-        ('PEIA West Virginia',            'peia.svg'),
-        ('Principal',                     'principal.svg'),
-        ('Sun Life',                      'sunlife.svg'),
-        ('United Concordia Dental',       'united-concordia.svg')
-      ] %}
+{% set plans = [
+  ('Aetna',                         'aetna.svg'),
+  ('Ameritas',                      'ameritas.svg'),
+  ('Anthem (BlueCross BlueShield)', 'anthem.svg'),
+  ('BlueCross BlueShield FEP',      'bcbs-fep.svg'),
+  ('BlueCross BlueShield of TN',    'bcbs-tn.svg'),
+  ('Cigna',                         'cigna.svg'),
+  ('Delta Dental',                  'delta.svg'),
+  ('Highmark BlueCross BlueShield', 'highmark.svg'),
+  ('Humana',                        'humana.svg'),
+  ('Humana Medicare Advantage',     'humana-ma.svg'),
+  ('Liberty Dental Plan',           'liberty.svg'),
+  ('Lincoln Financial Group',       'lincoln.svg'),
+  ('MetLife',                       'metlife.svg'),
+  ('PEIA West Virginia',            'peia.svg'),
+  ('Principal',                     'principal.svg'),
+  ('Sun Life',                      'sunlife.svg'),
+  ('United Concordia Dental',       'united-concordia.svg')
+] %}
 
-      {% for name,logo in plans %}
-      {% set abbr = (name.replace('(', '').split()[0][0] + name.split()|last[0]).upper() %}
-      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
-                  hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
+{% for name, logo in plans %}
+  {# build a 2-letter abbreviation safely #}
+  {% set words   = name.replace('(', '').replace(')', '').split() %}
+  {% set first   = words[0][0] if words|length > 0 else '' %}
+  {% set second  = words[1][0] if words|length > 1 else '' %}
+  {% set abbr    = (first ~ second)|upper %}
 
-        <div class="h-12 w-12 mb-4 rounded-full flex items-center justify-center text-base font-bold text-white
-                    bg-coral ring-1 ring-white/20">
-          {{ abbr }}
-        </div>
+  <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 flex flex-col items-center
+              hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition">
 
-        <img src="{{ url_for('static', path='forms/img/' + logo) }}"
-             alt="{{ name }}"
-             class="h-12 object-contain mb-4"
-             onerror="this.style.display='none';this.previousElementSibling.style.display='flex';"
-             onload="this.previousElementSibling.style.display='none';">
+    <!-- fallback badge -->
+    <div class="badge h-12 w-12 mb-4 rounded-full flex items-center justify-center
+                text-base font-bold text-white bg-coral ring-1 ring-white/20">
+      {{ abbr }}
+    </div>
 
-        <span class="text-sm font-semibold text-white text-center">{{ name }}</span>
-      </div>
-      {% endfor %}
+    <!-- logo (hides badge once it loads) -->
+    <img src="{{ url_for('static', path='forms/img/' + logo) }}"
+         alt="{{ name }}"
+         class="h-12 object-contain mb-4 hidden"
+         onload="this.previousElementSibling.style.display='none'; this.classList.remove('hidden');"
+         onerror="this.style.display='none';">
+
+    <span class="text-sm font-semibold text-white text-center">{{ name }}</span>
+  </div>
+{% endfor %}
 
     </div>
 
-    <!-- CTA -->
     <p class="mt-12 text-center text-gray-100">
-      Don’t see your carrier? We may still be able to help. Call
+      Don’t see your carrier? Call
       <a href="tel:+16062370073" class="underline text-coral">(606) 237-0073</a>
       and we’ll verify your benefits.
     </p>
