@@ -42,23 +42,15 @@
 
       <!-- ░░ Brand mark ░░ -->
       <a href="/" class="group flex items-center space-x-2 select-none">
-        <!-- tooth icon -->
-        <svg aria-hidden="true"
-             class="h-6 w-6 text-coral transition-transform group-hover:-rotate-6"
-             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2c2.5 0 6 2 6 7 0 5-1 13-6 13S6 14 6 9c0-5 3.5-7 6-7Z"/>
-        </svg>
+        <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
+             alt="" class="h-6 w-6 drop-shadow-sm">
 
-        <!-- word-mark -->
         <span class="text-lg sm:text-xl font-bold tracking-wide">
-          <!-- gradient on ‘Duncan’ -->
           <span class="bg-gradient-to-r from-coral via-rose-400 to-orange-300 bg-clip-text text-transparent
                        transition-colors group-hover:from-coral group-hover:to-coral">
             Duncan
           </span>
-          <!-- remainder -->
-          <span class="ml-1 transition-colors group-hover:text-coral">
+          <span class="ml-0.5 transition-colors group-hover:text-coral">
             Family&nbsp;Dentistry
           </span>
         </span>
@@ -86,7 +78,7 @@
       </button>
     </div>
 
-    <!-- Mobile drawer (unchanged) -->
+    <!-- Mobile drawer -->
     <div x-show="open" x-transition class="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
       <nav class="px-4 py-4 space-y-2 text-base font-medium">
         <a @click="open=false" href="/"             class="block text-gray-100 hover:text-coral">Home</a>
@@ -102,7 +94,7 @@
 
   <main id="main" class="flex-1">{% block content %}{% endblock %}</main>
 
-  <!-- FOOTER (unchanged) -->
+  <!-- FOOTER -->
   <footer class="nav-glass mt-24 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
       <div>
@@ -130,7 +122,7 @@
     <div class="text-center py-4 bg-black/60">© {{ now().year }} Duncan Family Dentistry.</div>
   </footer>
 
-  <!-- Scroll-to-top + page-transition scripts (unchanged) -->
+  <!-- Scroll-to-top -->
   <button x-show="showTop"
           x-transition.opacity x-transition.scale.90
           @click="window.scrollTo({top:0,behavior:'smooth'})"
@@ -139,7 +131,6 @@
   <div id="page-transition" class="fixed inset-0 bg-black opacity-0 z-50"></div>
 
   <script>
-    /* Alpine helpers (unchanged) */
     function appState(){return{highContrast:false,fontSize:16,showTop:false,
       init(){document.documentElement.style.fontSize=this.fontSize+'px';
             window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);}}}
@@ -148,7 +139,7 @@
       document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
     function initPageTransition(){const overlay=document.getElementById('page-transition');
       window.addEventListener('pageshow',()=>{overlay.style.opacity=0});
-      document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])')
+      document.querySelectorAll('a[href]:not([target]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])')
         .forEach(a=>a.addEventListener('click',e=>{
           if(a.href.startsWith(window.location.origin)){e.preventDefault();
             overlay.style.opacity=1;setTimeout(()=>window.location=a.href,250);}}));}
