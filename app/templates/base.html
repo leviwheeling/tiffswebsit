@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}Duncan Family Dentistry{% endblock %}</title>
-  <meta name="description" content="Modern family dentistry in Belfry, KY – gentle care, dazzling smiles." />
+  <meta name="description" content="Modern family dentistry in South Williamson, KY – gentle care, dazzling smiles." />
 
   <!-- Tailwind -->
   <link rel="stylesheet" href="{{ url_for('static', path='assets/site.css') }}" />
@@ -39,14 +39,37 @@
   <!-- NAVBAR -->
   <header class="nav-glass sticky top-0 z-50" x-data="{open:false}">
     <div class="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-      <a href="/" class="text-lg sm:text-xl font-bold tracking-wide text-white">Duncan Family Dentistry</a>
+
+      <!-- ░░ Brand mark ░░ -->
+      <a href="/" class="group flex items-center space-x-2 select-none">
+        <!-- tooth icon -->
+        <svg aria-hidden="true"
+             class="h-6 w-6 text-coral transition-transform group-hover:-rotate-6"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2c2.5 0 6 2 6 7 0 5-1 13-6 13S6 14 6 9c0-5 3.5-7 6-7Z"/>
+        </svg>
+
+        <!-- word-mark -->
+        <span class="text-lg sm:text-xl font-bold tracking-wide">
+          <!-- gradient on ‘Duncan’ -->
+          <span class="bg-gradient-to-r from-coral via-rose-400 to-orange-300 bg-clip-text text-transparent
+                       transition-colors group-hover:from-coral group-hover:to-coral">
+            Duncan
+          </span>
+          <!-- remainder -->
+          <span class="ml-1 transition-colors group-hover:text-coral">
+            Family&nbsp;Dentistry
+          </span>
+        </span>
+      </a>
 
       <!-- Desktop nav -->
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
         <a href="/"             class="hover:text-coral">Home</a>
         <a href="/about"        class="hover:text-coral">About</a>
         <a href="/services"     class="hover:text-coral">Services</a>
-        <a href="/insurance"    class="hover:text-coral">Insurance</a><!-- NEW -->
+        <a href="/insurance"    class="hover:text-coral">Insurance</a>
         <a href="/new-patients" class="hover:text-coral">New Patients</a>
         <a href="/location"     class="hover:text-coral">Location</a>
         <a href="/contact"      class="hover:text-coral">Contact</a>
@@ -63,13 +86,13 @@
       </button>
     </div>
 
-    <!-- Mobile drawer -->
+    <!-- Mobile drawer (unchanged) -->
     <div x-show="open" x-transition class="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
       <nav class="px-4 py-4 space-y-2 text-base font-medium">
         <a @click="open=false" href="/"             class="block text-gray-100 hover:text-coral">Home</a>
         <a @click="open=false" href="/about"        class="block text-gray-100 hover:text-coral">About</a>
         <a @click="open=false" href="/services"     class="block text-gray-100 hover:text-coral">Services</a>
-        <a @click="open=false" href="/insurance"    class="block text-gray-100 hover:text-coral">Insurance</a><!-- NEW -->
+        <a @click="open=false" href="/insurance"    class="block text-gray-100 hover:text-coral">Insurance</a>
         <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
         <a @click="open=false" href="/location"     class="block text-gray-100 hover:text-coral">Location</a>
         <a @click="open=false" href="/contact"      class="block text-gray-100 hover:text-coral">Contact</a>
@@ -79,14 +102,15 @@
 
   <main id="main" class="flex-1">{% block content %}{% endblock %}</main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (unchanged) -->
   <footer class="nav-glass mt-24 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Contact</h2>
         <p>79 Mall Rd, Ste B<br>South Williamson, KY&nbsp;41503</p>
         <p class="mt-2">Phone: <a href="tel:+16062370073" class="underline">(606) 237-0073</a><br>
-           Email: <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">info@duncanfamilydentistry.com</a></p>
+           Email: <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">
+           info@duncanfamilydentistry.com</a></p>
       </div>
       <div>
         <h2 class="text-lg font-semibold text-coral mb-2">Hours</h2>
@@ -96,7 +120,7 @@
         <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
         <ul class="space-y-1">
           <li><a href="/services"      class="underline hover:text-coral">Services</a></li>
-          <li><a href="/insurance"     class="underline hover:text-coral">Insurance</a></li><!-- NEW -->
+          <li><a href="/insurance"     class="underline hover:text-coral">Insurance</a></li>
           <li><a href="/new-patients"  class="underline hover:text-coral">New Patients</a></li>
           <li><a href="/location"      class="underline hover:text-coral">Location</a></li>
           <li><a href="/privacy"       class="underline hover:text-coral">Privacy</a></li>
@@ -106,13 +130,12 @@
     <div class="text-center py-4 bg-black/60">© {{ now().year }} Duncan Family Dentistry.</div>
   </footer>
 
-  <!-- Scroll-to-top -->
+  <!-- Scroll-to-top + page-transition scripts (unchanged) -->
   <button x-show="showTop"
           x-transition.opacity x-transition.scale.90
           @click="window.scrollTo({top:0,behavior:'smooth'})"
           class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
 
-  <!-- Page-transition overlay -->
   <div id="page-transition" class="fixed inset-0 bg-black opacity-0 z-50"></div>
 
   <script>
@@ -125,7 +148,7 @@
       document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
     function initPageTransition(){const overlay=document.getElementById('page-transition');
       window.addEventListener('pageshow',()=>{overlay.style.opacity=0});
-      document.querySelectorAll('a[href]:not([target]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])')
+      document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])')
         .forEach(a=>a.addEventListener('click',e=>{
           if(a.href.startsWith(window.location.origin)){e.preventDefault();
             overlay.style.opacity=1;setTimeout(()=>window.location=a.href,250);}}));}
