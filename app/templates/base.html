@@ -116,6 +116,7 @@
           <li><a href="/new-patients"  class="underline hover:text-coral">New Patients</a></li>
           <li><a href="/location"      class="underline hover:text-coral">Location</a></li>
           <li><a href="/privacy"       class="underline hover:text-coral">Privacy</a></li>
+          <li><a href="/sitemap.xml"   class="underline hover:text-coral">Sitemap</a></li>
         </ul>
       </div>
     </div>
@@ -139,7 +140,7 @@
       document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
     function initPageTransition(){const overlay=document.getElementById('page-transition');
       window.addEventListener('pageshow',()=>{overlay.style.opacity=0});
-      document.querySelectorAll('a[href]:not([target]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])')
+      document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])')
         .forEach(a=>a.addEventListener('click',e=>{
           if(a.href.startsWith(window.location.origin)){e.preventDefault();
             overlay.style.opacity=1;setTimeout(()=>window.location=a.href,250);}}));}

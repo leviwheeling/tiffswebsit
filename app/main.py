@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.responses import Response, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
@@ -32,7 +33,6 @@ async def services(request: Request):
 async def insurance(request: Request):
     return templates.TemplateResponse("insurance.html", {"request": request})
 
-
 @app.get("/new-patients", include_in_schema=False)
 @app.get("/new_patients", include_in_schema=False)
 async def new_patients(request: Request):
@@ -49,3 +49,31 @@ async def location(request: Request):
 @app.get("/privacy", include_in_schema=False)
 async def privacy(request: Request):
     return templates.TemplateResponse("privacy.html", {"request": request})
+
+# ── SITEMAP & ROBOTS ─────────────────────────────────────────────────────────
+@app.get("/sitemap.xml", include_in_schema=False)
+async def sitemap_xml(request: Request):
+    base = str(request.base_url).rstrip("/")
+    urls = [
+        "/", "/about", "/services", "/insurance", "/new-patients",
+        "/location", "/contact", "/privacy",
+        "/static/forms/new-patient-packet.pdf",
+        "/static/forms/hipaa-notice.pdf",
+    ]
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        "\n".join([f"<url><loc>{base}{path}</loc></url>" for path in urls]) +
+        "\n</urlset>"
+    )
+    return Response(content=xml, media_type="application/xml")
+
+@app.get("/robots.txt", include_in_schema=False)
+async def robots_txt(request: Request):
+    base = str(request.base_url).rstrip("/")
+    txt = f"""User-agent: *
+Allow: /
+
+Sitemap: {base}/sitemap.xml
+"""
+    return PlainTextResponse(txt)
