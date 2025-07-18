@@ -3,8 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}Duncan Family Dentistry{% endblock %}</title>
-  <meta name="description" content="Modern family dentistry in South Williamson, KY – gentle care, dazzling smiles." />
+  <title>{% block title %}Duncan Family Dentistry | Belfry KY Dentist for Families & Kids{% endblock %}</title>
+  <meta name="description" content="Looking for a family dentist in Belfry, KY or South Williamson? Duncan Family Dentistry provides gentle, comprehensive dental care to Eastern Kentucky & Southern West Virginia families for over 25 years." />
+
+  <!-- Local Business Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Duncan Family Dentistry",
+    "image": "https://duncanfamilydental.com/static/forms/img/tooth.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "79 Mall Rd, Suite B",
+      "addressLocality": "South Williamson",
+      "addressRegion": "KY",
+      "postalCode": "41503",
+      "addressCountry": "US"
+    },
+    "url": "https://duncanfamilydental.com",
+    "telephone": "+1-606-237-0073",
+    "openingHours": "Mo-Th 08:00-17:00, Fr 08:00-15:00",
+    "priceRange": "$$",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 37.6806,
+      "longitude": -82.2831
+    },
+    "sameAs": [
+      "https://www.facebook.com/people/Tiffany-Todd-Duncan-DMD/61562745692581/?_rdr"
+    ]
+  }
+  </script>
 
   <!-- Tailwind -->
   <link rel="stylesheet" href="{{ url_for('static', path='assets/site.css') }}" />
@@ -39,15 +69,11 @@
   <!-- NAVBAR -->
   <header class="nav-glass sticky top-0 z-50" x-data="{open:false}">
     <div class="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-
-      <!-- ░░ Brand mark ░░ -->
       <a href="/" class="group flex items-center space-x-2 select-none">
         <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
              alt="" class="h-6 w-6 drop-shadow-sm">
-
         <span class="text-lg sm:text-xl font-bold tracking-wide">
-          <span class="bg-gradient-to-r from-coral via-rose-400 to-orange-300 bg-clip-text text-transparent
-                       transition-colors group-hover:from-coral group-hover:to-coral">
+          <span class="bg-gradient-to-r from-coral via-rose-400 to-orange-300 bg-clip-text text-transparent transition-colors group-hover:from-coral group-hover:to-coral">
             Duncan
           </span>
           <span class="ml-0.5 transition-colors group-hover:text-coral">
@@ -55,8 +81,6 @@
           </span>
         </span>
       </a>
-
-      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
         <a href="/"             class="hover:text-coral">Home</a>
         <a href="/about"        class="hover:text-coral">About</a>
@@ -66,8 +90,6 @@
         <a href="/location"     class="hover:text-coral">Location</a>
         <a href="/contact"      class="hover:text-coral">Contact</a>
       </nav>
-
-      <!-- Hamburger -->
       <button @click="open=!open"
               class="md:hidden p-2 text-white hover:bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
