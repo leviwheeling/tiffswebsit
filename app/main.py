@@ -38,6 +38,14 @@ async def insurance(request: Request):
 async def new_patients(request: Request):
     return templates.TemplateResponse("new_patients.html", {"request": request})
 
+@app.get("/schedule", include_in_schema=False)
+async def schedule(request: Request):
+    return templates.TemplateResponse("schedule.html", {"request": request})
+
+@app.get("/pay-bill", include_in_schema=False)
+async def pay_bill(request: Request):
+    return templates.TemplateResponse("pay_bill.html", {"request": request})
+
 @app.get("/contact", include_in_schema=False)
 async def contact(request: Request):
     return templates.TemplateResponse("contact.html", {"request": request})
@@ -55,7 +63,7 @@ async def privacy(request: Request):
 async def sitemap_xml(request: Request):
     base = str(request.base_url).rstrip("/")
     urls = [
-        "/", "/about", "/services", "/insurance", "/new-patients",
+        "/", "/about", "/services", "/insurance", "/new-patients", "/schedule", "/pay-bill",
         "/location", "/contact", "/privacy",
         "/static/forms/new-patient-packet.pdf",
         "/static/forms/hipaa-notice.pdf",

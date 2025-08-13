@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Pay A Bill – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO BANNER -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Pay Your Bill</h1>
+</section>
+
+<!-- BILL PAYMENT INTRO -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <h2 class="text-3xl font-bold text-coral mb-4">Secure Online Bill Payment</h2>
+      <p class="text-gray-100 text-lg mb-6">Pay your dental bill quickly and securely through our trusted payment partner. Your payment information is protected with bank-level security.</p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-200">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Secure Payment</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Instant Processing</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>24/7 Access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT BUTTON SECTION -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-12 shadow-xl">
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold text-white mb-4">Ready to Pay Your Bill?</h3>
+        <p class="text-gray-200 mb-6">Click the button below to securely access your account and make a payment.</p>
+      </div>
+      
+      <div class="mb-8">
+        <a href="https://weavebillpay.com/2ad39744" target="_blank" class="inline-block">
+          <button class="bg-coral hover:bg-coral/90 text-white font-medium px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-coral/50">
+            <div class="flex items-center space-x-3">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Pay Your Bill Now</span>
+            </div>
+          </button>
+        </a>
+      </div>
+      
+      <div class="text-sm text-gray-300">
+        <p>You'll be redirected to our secure payment portal</p>
+        <p class="mt-1">Opens in a new tab for your security</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ALTERNATIVE CONTACT -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <h2 class="text-2xl font-bold text-coral mb-4">Need Help with Your Bill?</h2>
+      <p class="text-gray-100 mb-6">If you have questions about your bill or need to discuss payment options, our friendly staff is here to help.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="tel:+16062370073" class="bg-coral hover:bg-coral/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          <span>(606) 237-0073</span>
+        </a>
+        <a href="/contact" class="border border-coral text-coral hover:bg-coral hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -56,6 +56,7 @@
       border-bottom:1px solid rgba(255,255,255,.1)}
     .hc body::before,.hc body::after{display:none}
     #page-transition{transition:opacity .25s ease;pointer-events:none}
+
   </style>
 </head>
 <body x-data="appState()" x-init="initReveal();initPageTransition()"
@@ -85,6 +86,8 @@
         <a href="/"             class="hover:text-coral">Home</a>
         <a href="/about"        class="hover:text-coral">About</a>
         <a href="/services"     class="hover:text-coral">Services</a>
+        <a href="/schedule"     class="hover:text-coral">Scheduling</a>
+        <a href="/pay-bill"     class="hover:text-coral">Pay A Bill</a>
         <a href="/insurance"    class="hover:text-coral">Insurance</a>
         <a href="/new-patients" class="hover:text-coral">New Patients</a>
         <a href="/location"     class="hover:text-coral">Location</a>
@@ -106,6 +109,8 @@
         <a @click="open=false" href="/"             class="block text-gray-100 hover:text-coral">Home</a>
         <a @click="open=false" href="/about"        class="block text-gray-100 hover:text-coral">About</a>
         <a @click="open=false" href="/services"     class="block text-gray-100 hover:text-coral">Services</a>
+        <a @click="open=false" href="/schedule"     class="block text-gray-100 hover:text-coral">Scheduling</a>
+        <a @click="open=false" href="/pay-bill"     class="block text-gray-100 hover:text-coral">Pay A Bill</a>
         <a @click="open=false" href="/insurance"    class="block text-gray-100 hover:text-coral">Insurance</a>
         <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
         <a @click="open=false" href="/location"     class="block text-gray-100 hover:text-coral">Location</a>
@@ -134,6 +139,8 @@
         <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
         <ul class="space-y-1">
           <li><a href="/services"      class="underline hover:text-coral">Services</a></li>
+          <li><a href="/schedule"      class="underline hover:text-coral">Scheduling</a></li>
+          <li><a href="/pay-bill"      class="underline hover:text-coral">Pay A Bill</a></li>
           <li><a href="/insurance"     class="underline hover:text-coral">Insurance</a></li>
           <li><a href="/new-patients"  class="underline hover:text-coral">New Patients</a></li>
           <li><a href="/location"      class="underline hover:text-coral">Location</a></li>

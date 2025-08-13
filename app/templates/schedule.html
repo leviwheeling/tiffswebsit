@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Scheduling – Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO BANNER -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Schedule Your Appointment</h1>
+</section>
+
+<!-- SCHEDULING INTRO -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <h2 class="text-3xl font-bold text-coral mb-4">Book Your Visit Online</h2>
+      <p class="text-gray-100 text-lg mb-6">Schedule your dental appointment with ease using our secure online booking system. Choose your preferred date and time, and we'll confirm your appointment promptly.</p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-200">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Available 24/7</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Instant Confirmation</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-coral" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Secure & Private</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULING IFRAME -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
+      <div class="w-full rounded-xl overflow-hidden" style="height: 900px !important;">
+        <iframe 
+          src="https://book2.getweave.com/b5107740-a3f2-414c-86e4-abfebcaa1cb6/request-appointment?source=WEBSITE"
+          class="w-full h-full border-0"
+          style="height: 100% !important; min-height: 2000px !important;"
+          title="Schedule Appointment - Duncan Family Dentistry"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATIVE CONTACT -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <h2 class="text-2xl font-bold text-coral mb-4">Prefer to Call?</h2>
+      <p class="text-gray-100 mb-6">If you'd rather schedule over the phone or have questions about available times, our friendly staff is here to help.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="tel:+16062370073" class="bg-coral hover:bg-coral/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          <span>(606) 237-0073</span>
+        </a>
+        <a href="/contact" class="border border-coral text-coral hover:bg-coral hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
