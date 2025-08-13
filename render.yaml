@@ -6,7 +6,8 @@ services:
     region: oregon
 
     buildCommand: |
-      # 1. Install Node dependencies and build Tailwind
+      # 1. Clear npm cache and install Node dependencies
+      npm cache clean --force
       npm ci
       npm run build
 
