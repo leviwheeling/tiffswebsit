@@ -33,6 +33,20 @@
 /* Desktop positioning */
 @media (min-width: 1025px) {
   .hero-bg {
-    background-position: 60% 25%;
+    background-position: 50% 15%;
+  }
+}
+
+/* Large desktop positioning - prevent head cutoff */
+@media (min-width: 1400px) {
+  .hero-bg {
+    background-position: 50% 10%;
+  }
+}
+
+/* Extra large screens - ensure full photo visibility */
+@media (min-width: 1920px) {
+  .hero-bg {
+    background-position: 50% 5%;
   }
 }
