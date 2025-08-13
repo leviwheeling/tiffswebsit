@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom hero background for mobile responsiveness */
+.hero-bg {
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+    linear-gradient(to bottom, transparent 60%, rgba(0,27,68,0.8) 90%, rgba(0,27,68,1) 100%), 
+    url('/static/forms/img/team.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Mobile-specific positioning */
+@media (max-width: 640px) {
+  .hero-bg {
+    background-position: center 30%;
+    background-size: cover;
+  }
+}
+
+/* Tablet positioning */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-bg {
+    background-position: 50% 25%;
+  }
+}
+
+/* Desktop positioning */
+@media (min-width: 1025px) {
+  .hero-bg {
+    background-position: 60% 25%;
+  }
+}
