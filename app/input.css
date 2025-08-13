@@ -4,20 +4,22 @@
 
 /* Custom hero background for mobile responsiveness */
 .hero-bg {
+  /* Default: just gradients for mobile */
   background-image: 
     linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-    linear-gradient(to bottom, transparent 60%, rgba(0,27,68,0.8) 90%, rgba(0,27,68,1) 100%), 
-    url('/static/forms/img/team.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    linear-gradient(to bottom, transparent 60%, rgba(0,27,68,0.8) 90%, rgba(0,27,68,1) 100%);
 }
 
-/* Mobile-specific positioning */
-@media (max-width: 640px) {
+/* Tablet and desktop: add background image */
+@media (min-width: 641px) {
   .hero-bg {
-    background-position: center 30%;
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+      linear-gradient(to bottom, transparent 60%, rgba(0,27,68,0.8) 90%, rgba(0,27,68,1) 100%), 
+      url('/static/forms/img/team.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
