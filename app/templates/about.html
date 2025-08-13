@@ -61,7 +61,7 @@
       ] %}
       {% for m in staff %}
       <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 shadow-lg flex flex-col items-center hover:shadow-2xl transition-transform hover:-translate-y-1">
-        <div class="w-24 h-24 rounded-full overflow-hidden shadow mb-4 flex-shrink-0" style="aspect-ratio: 1/1;">
+        <div class="w-32 h-32 rounded-full overflow-hidden shadow mb-4 flex-shrink-0" style="aspect-ratio: 1/1;">
           <img src="{{ url_for('static', path='forms/img/' + m.img) }}" alt="{{m.name}}" class="w-full h-full object-cover object-center" />
         </div>
         <h3 class="text-lg font-semibold text-white">{{m.name}}</h3>
