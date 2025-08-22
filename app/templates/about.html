@@ -47,6 +47,45 @@
   </div>
 </section>
 
+<!-- TEAM COLLECTIVE -->
+<section class="py-24 bg-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4">The Duncan Collective</h2>
+      <p class="text-xl text-gray-200 max-w-3xl mx-auto">Where expertise meets heart! Our unified team brings together decades of experience, cutting-edge training, and genuine care for every patient who walks through our doors.</p>
+    </div>
+    
+    <div class="text-center">
+      <div class="reveal relative group inline-block" x-data="{ isHovered: false }" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl border-2 border-white/20 transition-all duration-500 group-hover:border-coral/50 max-w-full">
+        <img src="{{ url_for('static', path='forms/img/team.jpg') }}" 
+             alt="The complete Duncan Family Dentistry team" 
+             class="block w-full h-auto transition-transform duration-700 group-hover:scale-105" />
+        
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+        
+        <!-- Interactive overlay content -->
+        <div class="absolute inset-0 flex items-end justify-center p-8">
+          <div class="text-center text-white transform transition-all duration-500 group-hover:-translate-y-2">
+            <h3 class="text-2xl sm:text-3xl font-bold mb-2" x-text="isHovered ? 'United in Excellence' : 'Our Amazing Team'"></h3>
+            <p class="text-gray-200 text-sm sm:text-base opacity-90" 
+               x-text="isHovered ? 'Every smile tells a story — we\'re here to make yours extraordinary.' : 'Hover to see our mission in action'"></p>
+          </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute bottom-4 left-4 flex space-x-2">
+          <div class="w-2 h-2 rounded-full bg-coral/60 animate-pulse"></div>
+          <div class="w-2 h-2 rounded-full bg-coral/40 animate-pulse" style="animation-delay: 0.2s;"></div>
+          <div class="w-2 h-2 rounded-full bg-coral/20 animate-pulse" style="animation-delay: 0.4s;"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
 <!-- TEAM GRID -->
 <section class="py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
