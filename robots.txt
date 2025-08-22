@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://duncanfamilydental.com/sitemap.xml
+# Block PDFs from search results (they're for patients, not search)
+Disallow: /static/forms/*.pdf
+
+# Allow sitemap
+Sitemap: https://www.duncanfamilydental.com/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1

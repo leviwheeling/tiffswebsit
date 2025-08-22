@@ -3,8 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}Duncan Family Dentistry | Belfry KY Dentist for Families & Kids{% endblock %}</title>
-  <meta name="description" content="Looking for a family dentist in Belfry, KY or South Williamson? Duncan Family Dentistry provides gentle, comprehensive dental care to Eastern Kentucky & Southern West Virginia families for over 25 years." />
+  <title>{% block title %}Duncan Family Dentistry | Belfry KY & South Williamson Dentist for Families & Kids{% endblock %}</title>
+  <meta name="description" content="Top-rated family dentist in Belfry KY and South Williamson KY. Duncan Family Dentistry provides gentle, comprehensive dental care to Eastern Kentucky & Southern West Virginia families for over 25 years. Call (606) 237-0073." />
+  
+  <!-- Enhanced SEO Meta Tags -->
+  <meta name="keywords" content="dentist Belfry KY, dentist South Williamson KY, family dentist Eastern Kentucky, dental care Pike County KY, dentist near me, dental cleaning, tooth extraction, dental emergency Belfry" />
+  <meta name="geo.region" content="US-KY" />
+  <meta name="geo.placename" content="Belfry, South Williamson" />
+  <meta name="geo.position" content="37.6806;-82.2831" />
+  <meta name="ICBM" content="37.6806, -82.2831" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', path='forms/img/tooth.png') }}">
@@ -21,13 +28,16 @@
     gtag('config', 'G-GKDLQDSC7R');
   </script>
 
-  <!-- Local Business Schema -->
+  <!-- Enhanced Local Business Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Dentist",
     "name": "Duncan Family Dentistry",
-    "image": "https://duncanfamilydental.com/static/forms/img/tooth.png",
+    "alternateName": "Dr. Tiffany Duncan DMD",
+    "description": "Top-rated family dentist serving Belfry KY, South Williamson KY, and Eastern Kentucky. Comprehensive dental care for over 25 years.",
+    "image": "https://www.duncanfamilydental.com/static/forms/img/tooth.png",
+    "logo": "https://www.duncanfamilydental.com/static/forms/img/tooth.png",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "79 Mall Rd, Suite B",
@@ -36,14 +46,50 @@
       "postalCode": "41503",
       "addressCountry": "US"
     },
-    "url": "https://duncanfamilydental.com",
+    "url": "https://www.duncanfamilydental.com",
     "telephone": "+1-606-237-0073",
+    "email": "info@duncanfamilydentistry.com",
     "openingHours": "Mo-Th 08:00-17:00, Fr 08:00-15:00",
     "priceRange": "$$",
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 37.6806,
       "longitude": -82.2831
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Belfry", "addressRegion": "KY"},
+      {"@type": "City", "name": "South Williamson", "addressRegion": "KY"},
+      {"@type": "City", "name": "Pikeville", "addressRegion": "KY"},
+      {"@type": "AdministrativeArea", "name": "Eastern Kentucky"},
+      {"@type": "AdministrativeArea", "name": "Pike County, KY"}
+    ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.6806,
+        "longitude": -82.2831
+      },
+      "geoRadius": "50000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Dental Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dental Cleanings"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dental Exams"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tooth Fillings"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dental Crowns"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Root Canal Therapy"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Teeth Whitening"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Family Dentistry"}}
+      ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Tiffany Duncan",
+      "jobTitle": "Dentist",
+      "alumniOf": "University of Louisville School of Dentistry"
     },
     "sameAs": [
       "https://www.facebook.com/people/Tiffany-Todd-Duncan-DMD/61562745692581/?_rdr"
