@@ -58,13 +58,21 @@ async def location(request: Request):
 async def privacy(request: Request):
     return templates.TemplateResponse("privacy.html", {"request": request})
 
+@app.get("/careers", include_in_schema=False)
+async def careers(request: Request):
+    return templates.TemplateResponse("careers.html", {"request": request})
+
+@app.get("/thanks", include_in_schema=False)
+async def thanks(request: Request):
+    return templates.TemplateResponse("thanks.html", {"request": request})
+
 # ── SITEMAP & ROBOTS ─────────────────────────────────────────────────────────
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap_xml(request: Request):
     base = str(request.base_url).rstrip("/")
     urls = [
         "/", "/about", "/services", "/insurance", "/new-patients", "/schedule", "/pay-bill",
-        "/location", "/contact", "/privacy",
+        "/careers", "/location", "/contact", "/privacy", "/thanks",
         "/static/forms/new-patient-packet.pdf",
         "/static/forms/hipaa-notice.pdf",
     ]

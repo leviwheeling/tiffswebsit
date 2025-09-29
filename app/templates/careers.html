@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+
+{% block title %}Careers | Join Our Team | Duncan Family Dentistry{% endblock %}
+
+{% block content %}
+<!-- HERO BANNER -->
+<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
+  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Join Our Team</h1>
+</section>
+
+<!-- CURRENT OPENINGS -->
+<section class="py-24">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal text-center mb-16">
+      <h2 class="text-3xl font-bold text-white mb-4">Current Job Openings</h2>
+      <p class="text-xl text-gray-200">We're always looking for dedicated professionals to join our dental family</p>
+    </div>
+
+    <!-- JOB POSTING -->
+    <article class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl text-gray-100 space-y-6 mt-8">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-coral">Dental Medical Assistant</h3>
+        <span class="bg-coral/20 text-coral px-3 py-1 rounded-full text-sm font-medium">Full-Time</span>
+      </div>
+      
+      <div class="space-y-4">
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Position Overview</h4>
+          <p>We are seeking a dedicated Dental Medical Assistant to join our team in both front and back office operations. This is a full-time position offering the opportunity to work in a family-oriented dental practice serving the Eastern Kentucky and Southern West Virginia communities.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Responsibilities</h4>
+          <ul class="list-disc list-inside marker:text-coral space-y-1">
+            <li>Cleaning and sterilizing dental instruments</li>
+            <li>Taking blood pressures and temperatures</li>
+            <li>Escorting patients to treatment rooms</li>
+            <li>Preparing and cleaning treatment rooms</li>
+            <li>Scheduling appointments and managing patient flow</li>
+            <li>Working with insurance companies and processing claims</li>
+            <li>Performing various front office administrative tasks</li>
+            <li>Assisting with patient care as needed</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">Requirements</h4>
+          <ul class="list-disc list-inside marker:text-coral space-y-1">
+            <li>High school diploma or equivalent (minimum education requirement)</li>
+            <li>Previous experience in the dental field preferred</li>
+            <li>Strong communication and interpersonal skills</li>
+            <li>Ability to work in a fast-paced environment</li>
+            <li>Detail-oriented and organized</li>
+            <li>Compassionate and patient-focused approach</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-2">What We Offer</h4>
+          <ul class="list-disc list-inside marker:text-coral space-y-1">
+            <li>Competitive compensation</li>
+            <li>Professional development opportunities</li>
+            <li>Family-friendly work environment</li>
+            <li>Supportive team atmosphere</li>
+          </ul>
+          <div class="mt-10">
+            <button 
+              onclick="document.getElementById('application-form').scrollIntoView({behavior: 'smooth'})"
+              class="bg-coral hover:bg-coral/80 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-transparent"
+            >
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section id="application-form" class="py-24 bg-white/5">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal text-center mb-12">
+      <h2 class="text-3xl font-bold text-white mb-4">Apply Today</h2>
+      <p class="text-lg text-gray-200">Ready to join our team? Submit your application below.</p>
+    </div>
+
+    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <form
+        action="https://formspree.io/f/xwprlvqa"
+        method="POST"
+        enctype="multipart/form-data"
+        class="space-y-6"
+      >
+        <!-- Personal Information -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold text-coral">Personal Information</h3>
+          
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="first_name" class="block text-sm font-medium text-gray-200 mb-2">
+                First Name *
+              </label>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white! focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+                placeholder="Your first name"
+              />
+            </div>
+            
+            <div>
+              <label for="last_name" class="block text-sm font-medium text-gray-200 mb-2">
+                Last Name *
+              </label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white! focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+                placeholder="Your last name"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white! focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-200 mb-2">
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white! focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+              placeholder="(606) 555-0123"
+            />
+          </div>
+        </div>
+
+        <!-- Professional Information -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold text-coral">Professional Information</h3>
+          
+          <div>
+            <label for="position" class="block text-sm font-medium text-gray-200 mb-2">
+              Position Applying For *
+            </label>
+            <select
+              id="position"
+              name="position"
+              required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            >
+              <option value="">Select a position</option>
+              <option value="Dental Medical Assistant">Dental Medical Assistant</option>
+              <option value="Other">Other (specify in cover letter)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="experience" class="block text-sm font-medium text-gray-200 mb-2">
+              Years of Dental Experience
+            </label>
+            <select
+              id="experience"
+              name="experience"
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            >
+              <option value="">Select experience level</option>
+              <option value="No experience">No dental experience</option>
+              <option value="Less than 1 year">Less than 1 year</option>
+              <option value="1-2 years">1-2 years</option>
+              <option value="3-5 years">3-5 years</option>
+              <option value="5+ years">5+ years</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="education" class="block text-sm font-medium text-gray-200 mb-2">
+              Highest Level of Education *
+            </label>
+            <select
+              id="education"
+              name="education"
+              required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            >
+              <option value="">Select education level</option>
+              <option value="High School Diploma">High School Diploma</option>
+              <option value="Some College">Some College</option>
+              <option value="Associate Degree">Associate Degree</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Graduate Degree">Graduate Degree</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold text-coral">Cover Letter</h3>
+          
+          <div>
+            <label for="cover_letter" class="block text-sm font-medium text-gray-200 mb-2">
+              Tell us about yourself and why you're interested in this position
+            </label>
+            <textarea
+              id="cover_letter"
+              name="cover_letter"
+              rows="6"
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-white! focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent resize-vertical"
+              placeholder="Please share your background, relevant experience, and what interests you about working at Duncan Family Dentistry..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Resume Upload -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold text-coral">Resume Upload</h3>
+          
+          <div>
+            <label for="resume" class="block text-sm font-medium text-gray-200 mb-2">
+              Upload Your Resume *
+            </label>
+            <input
+              type="file"
+              id="resume"
+              name="upload"
+              required
+              accept=".pdf,.doc,.docx,.png,.jpeg,.jpg"
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-coral file:text-white hover:file:bg-coral/80 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
+            />
+            <p class="text-sm text-white mt-2">
+              Accepted formats: PDF, DOC, DOCX, PNG, JPEG, JPG (Max file size: 10MB)
+            </p>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="w-full bg-coral hover:bg-coral/80 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-transparent"
+          >
+            Submit Application
+          </button>
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="text-sm text-white text-center">
+          <p>By submitting this application, you consent to the collection and processing of your personal information for employment purposes. We will only use your information to evaluate your candidacy for this position.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WORK WITH US -->
+<section class="py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal text-center mb-16">
+      <h2 class="text-3xl font-bold text-white mb-4">Why Work With Us?</h2>
+      <p class="text-xl text-gray-200">Join a practice that values both professional excellence and work-life balance</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Family-Focused Environment</h3>
+        <p class="text-gray-200">We treat our team like family and prioritize work-life balance for all our staff members.</p>
+      </div>
+
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Cutting-Edge Technology</h3>
+        <p class="text-gray-200">Work with the latest dental technology including digital X-rays and modern equipment.</p>
+      </div>
+
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Professional Growth</h3>
+        <p class="text-gray-200">Opportunities for continuing education and professional development in the dental field.</p>
+      </div>
+
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Supportive Team</h3>
+        <p class="text-gray-200">Work alongside experienced professionals who are passionate about patient care and teamwork.</p>
+      </div>
+
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Community Impact</h3>
+        <p class="text-gray-200">Make a difference in your local community by providing quality dental care to families.</p>
+      </div>
+
+      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-center">
+        <div class="w-4 h-4 bg-coral/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-2 h-2 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Competitive Benefits</h3>
+        <p class="text-gray-200">Enjoy competitive compensation and benefits package that values your contribution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
