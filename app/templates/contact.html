@@ -2,87 +2,169 @@
 {% block title %}Contact Dentist Belfry KY | South Williamson KY | Williamson WV Office | Duncan Family Dentistry{% endblock %}
 {% block content %}
 
-<!-- CONTACT SECTION -->
-<section class="py-28">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CONTACT SECTION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16 relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 -left-40 w-80 h-80 bg-coral-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 -right-40 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl"></div>
+  </div>
 
-    <!-- CONTACT FORM CARD -->
-    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl">
-      <h1 class="text-3xl font-bold text-white">Request an Appointment</h1>
-      <p class="mt-2 text-gray-200">
-        Fill out the form and our front-desk team will reach out soon.
-        For a quicker response, please call
-        <a href="tel:+16062370073" class="underline">(606) 237-0073</a>.
-        If you are having a medical emergency, please dial
-        <a href="tel:911" class="underline">911</a>.
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="reveal badge badge-coral mb-4">Get in Touch</span>
+      <h1 class="reveal font-display text-5xl sm:text-6xl font-bold text-white mb-6">
+        Contact <span class="text-gradient-coral">Us</span>
+      </h1>
+      <p class="reveal text-xl text-white/60 max-w-2xl mx-auto">
+        Have questions or ready to schedule? We'd love to hear from you.
       </p>
-
-      <!-- ‼️  Formspree endpoint -->
-      <form action="https://formspree.io/f/xzzvzdwe" method="POST" class="mt-8 space-y-6">
-
-        <!-- OPTIONAL hidden extras -->
-        <input type="hidden" name="_subject"   value="Website Appointment Request">
-        <input type="hidden" name="_redirect"  value="/thank-you-for-contacting-us!">   <!-- or omit for Formspree default -->
-        <input type="text"   name="_gotcha"    style="display:none"> <!-- honeypot spam trap -->
-
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div class="flex flex-col">
-            <label for="name" class="text-sm font-medium text-gray-200">Full Name *</label>
-            <input type="text" id="name" name="name" required
-                   class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
-          </div>
-          <div class="flex flex-col">
-            <label for="phone" class="text-sm font-medium text-gray-200">Phone *</label>
-            <input type="tel" id="phone" name="phone" required
-                   class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
-          </div>
-        </div>
-
-        <div class="flex flex-col">
-          <label for="email" class="text-sm font-medium text-gray-200">Email *</label>
-          <input type="email" id="email" name="email" required
-                 class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
-        </div>
-
-        <div class="flex flex-col">
-          <label for="preferred_date" class="text-sm font-medium text-gray-200">Preferred Date</label>
-          <input type="date" id="preferred_date" name="preferred_date"
-                 class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral">
-        </div>
-
-        <div class="flex flex-col">
-          <label for="message" class="text-sm font-medium text-gray-200">
-            Message <span class="text-xs">(Please do not include Protected Health Information)</span>
-          </label>
-          <textarea id="message" name="message" rows="4"
-                    class="mt-1 py-3 px-4 rounded-lg bg-white/80 text-gray-900 focus:ring-coral focus:border-coral"></textarea>
-        </div>
-
-        <button type="submit"
-                class="w-full py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90 transition">
-          Send Request
-        </button>
-      </form>
     </div>
 
-    <!-- MAP + INFO -->
-    <div class="reveal space-y-6">
-      <div class="w-full h-[28rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-        <iframe class="w-full h-full" loading="lazy" allowfullscreen
-                title="Map to Duncan Family Dentistry"
-                src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503&t=&z=15&ie=UTF8&iwloc=&output=embed">
-        </iframe>
+    <div class="grid gap-12 lg:grid-cols-2">
+      <!-- Contact Form -->
+      <div class="reveal">
+        <div class="card-premium p-8 lg:p-10">
+          <h2 class="font-display text-2xl font-bold text-white mb-2">Request an Appointment</h2>
+          <p class="text-white/60 mb-8">
+            Fill out the form and our front-desk team will reach out soon.
+            For a quicker response, please call
+            <a href="tel:+16062370073" class="text-coral-400 hover:text-coral-300 transition-colors">(606) 237-0073</a>.
+          </p>
+
+          <form action="https://formspree.io/f/xzzvzdwe" method="POST" class="space-y-6" x-data="{ submitting: false }" @submit="submitting = true">
+            <input type="hidden" name="_subject" value="Website Appointment Request">
+            <input type="hidden" name="_redirect" value="/thanks">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-white/80 mb-2">Full Name *</label>
+                <input type="text" id="name" name="name" required
+                       class="input-premium"
+                       placeholder="John Doe">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-white/80 mb-2">Phone *</label>
+                <input type="tel" id="phone" name="phone" required
+                       class="input-premium"
+                       placeholder="(606) 555-1234">
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email *</label>
+              <input type="email" id="email" name="email" required
+                     class="input-premium"
+                     placeholder="john@example.com">
+            </div>
+
+            <div>
+              <label for="preferred_date" class="block text-sm font-medium text-white/80 mb-2">Preferred Date</label>
+              <input type="date" id="preferred_date" name="preferred_date"
+                     class="input-premium">
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-white/80 mb-2">
+                Message <span class="text-white/40 text-xs">(Please do not include Protected Health Information)</span>
+              </label>
+              <textarea id="message" name="message" rows="4"
+                        class="input-premium resize-y"
+                        placeholder="Tell us how we can help..."></textarea>
+            </div>
+
+            <button type="submit"
+                    :disabled="submitting"
+                    class="btn-premium w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
+              <svg x-show="!submitting" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              <svg x-show="submitting" x-cloak class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span x-text="submitting ? 'Sending...' : 'Send Request'"></span>
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div class="text-gray-100 text-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6">
-        <p><strong class="text-coral">Address:</strong> 79 Mall Rd, Ste B, South Williamson, KY 41503</p>
-        <p class="mt-2"><strong class="text-coral">Phone:</strong>
-           <a href="tel:+16062370073" class="underline">(606) 237-0073</a></p>
-        <p><strong class="text-coral">Email:</strong>
-           <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">info@duncanfamilydental.com</p>
+      <!-- Map & Info -->
+      <div class="reveal space-y-6">
+        <!-- Map -->
+        <div class="card-premium p-2 overflow-hidden">
+          <div class="w-full h-80 rounded-2xl overflow-hidden">
+            <iframe class="w-full h-full" loading="lazy" allowfullscreen
+                    title="Map to Duncan Family Dentistry"
+                    src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503&t=&z=15&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Contact Info Cards -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="card-premium p-6">
+            <div class="w-12 h-12 rounded-xl bg-coral-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white mb-2">Address</h3>
+            <p class="text-white/60 text-sm">79 Mall Rd, Suite B<br>South Williamson, KY 41503</p>
+          </div>
+
+          <div class="card-premium p-6">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white mb-2">Phone</h3>
+            <a href="tel:+16062370073" class="text-white/60 text-sm hover:text-coral-400 transition-colors">(606) 237-0073</a>
+          </div>
+
+          <div class="card-premium p-6">
+            <div class="w-12 h-12 rounded-xl bg-mint-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-mint-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white mb-2">Email</h3>
+            <a href="mailto:duncanfamilydentistry@gmail.com" class="text-white/60 text-sm hover:text-coral-400 transition-colors break-all">info@duncanfamilydentistry.com</a>
+          </div>
+
+          <div class="card-premium p-6">
+            <div class="w-12 h-12 rounded-xl bg-coral-500/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white mb-2">Hours</h3>
+            <p class="text-white/60 text-sm">Mon–Thu: 8am–5pm<br>Fri: 8am–3pm</p>
+          </div>
+        </div>
+
+        <!-- Emergency Notice -->
+        <div class="card-premium p-6 border-coral-500/30 bg-coral-500/5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-coral-500/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-semibold text-coral-400 mb-1">Medical Emergency?</h3>
+              <p class="text-white/60 text-sm">If you are having a medical emergency, please dial <a href="tel:911" class="text-coral-400 font-semibold">911</a> immediately.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </section>
 {% endblock %}

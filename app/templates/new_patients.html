@@ -3,50 +3,96 @@
 {% block title %}New Patients Belfry KY | South Williamson KY | Williamson WV Dentist | Duncan Family Dentistry{% endblock %}
 
 {% block content %}
-<!-- HERO -->
-<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
-  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Welcome, New Patients!</h1>
-</section>
-
-<!-- HOW IT WORKS TIMELINE -->
-<section class="py-24">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="reveal text-3xl font-bold text-center text-white mb-12">Your First Visit – Four Easy Steps</h2>
-    <ol class="relative border-l-2 border-coral space-y-10">
-      {% set steps=[
-        {'title':'Download & Complete Forms','desc':'Fill out our new patient packet at your convenience to save time in the office.'},
-        {'title':'Insurance Verification','desc':'Please bring Photo ID! Email front and back, or bring your insurance card—our team confirms benefits before your appointment.'},
-        {'title':'Comprehensive Exam & X‑Rays','desc':'Digital dental x-rays and a gentle exam let us get the full picture.'},
-        {'title':'Personalized Treatment Plan','desc':'We review findings, answer questions, and map out next steps together.'},
-      ] %}
-      {% for s in steps %}
-      <li class="ml-6 reveal flex gap-6 items-start">
-        <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border-2 border-coral text-coral font-bold">{{ loop.index }}</span>
-        <div>
-          <h3 class="text-xl font-semibold text-white">{{ s.title }}</h3>
-          <p class="text-gray-200 mt-1">{{ s.desc }}</p>
-        </div>
-      </li>
-      {% endfor %}
-    </ol>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="relative py-16 overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-20 -left-40 w-80 h-80 bg-coral-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 -right-40 w-80 h-80 bg-mint-500/10 rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <span class="reveal badge badge-coral mb-4">Welcome!</span>
+    <h1 class="reveal font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+      New <span class="text-gradient-coral">Patients</span>
+    </h1>
+    <p class="reveal text-lg sm:text-xl text-white/60 max-w-2xl mx-auto">
+      We're excited to welcome you to the Duncan Family Dentistry family
+    </p>
   </div>
 </section>
 
-<!-- ONLINE FORM -->
-<section class="py-24 bg-white/5 backdrop-blur-md border-y border-white/10">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FIRST VISIT TIMELINE
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="reveal badge badge-mint mb-4">Getting Started</span>
+      <h2 class="reveal font-display text-4xl font-bold text-white mb-4">
+        Your First Visit – <span class="text-gradient-coral">Four Easy Steps</span>
+      </h2>
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-coral-500 via-brand-500 to-mint-500 hidden sm:block"></div>
+      
+      <div class="space-y-8 stagger-children">
+        {% set steps = [
+          {'num': '1', 'title': 'Download & Complete Forms', 'desc': 'Fill out our new patient packet at your convenience to save time in the office.', 'color': 'coral'},
+          {'num': '2', 'title': 'Insurance Verification', 'desc': 'Please bring Photo ID! Email front and back, or bring your insurance card—our team confirms benefits before your appointment.', 'color': 'brand'},
+          {'num': '3', 'title': 'Comprehensive Exam & X-Rays', 'desc': 'Digital dental x-rays and a gentle exam let us get the full picture of your oral health.', 'color': 'mint'},
+          {'num': '4', 'title': 'Personalized Treatment Plan', 'desc': 'We review findings, answer questions, and map out next steps together.', 'color': 'coral'}
+        ] %}
+        
+        {% for s in steps %}
+        <div class="relative flex gap-6 sm:gap-8">
+          <!-- Number -->
+          <div class="relative z-10 flex-shrink-0">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center font-display text-2xl font-bold text-white
+                        {% if s.color == 'coral' %}bg-gradient-to-br from-coral-500 to-coral-600 shadow-[0_0_30px_-5px_rgba(240,100,90,0.5)]
+                        {% elif s.color == 'brand' %}bg-gradient-to-br from-brand-500 to-brand-600 shadow-[0_0_30px_-5px_rgba(0,104,207,0.5)]
+                        {% else %}bg-gradient-to-br from-mint-500 to-mint-600 shadow-[0_0_30px_-5px_rgba(28,173,125,0.5)]{% endif %}">
+              {{ s.num }}
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="rounded-3xl p-6 flex-1 bg-white/[0.1]">
+            <h3 class="font-display text-xl font-semibold text-white mb-2">{{ s.title }}</h3>
+            <p class="text-white/60 leading-relaxed">{{ s.desc }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     ONLINE FORM
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="forms" class="py-16 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="reveal space-y-8 text-center mb-12">
-      <h2 class="text-3xl font-bold text-coral">Fill Out Forms Online</h2>
-      <p class="text-gray-100 max-w-3xl mx-auto">Complete your new patient forms digitally before your visit. This convenient option saves time and ensures all your information is ready when you arrive for your appointment.</p>
+    <div class="text-center mb-8">
+      <span class="reveal badge badge-coral mb-4">Save Time</span>
+      <h2 class="reveal font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+        Fill Out Forms <span class="text-gradient-coral">Online</span>
+      </h2>
+      <p class="reveal text-lg text-white/60 max-w-2xl mx-auto">
+        Complete your new patient forms digitally before your visit. This convenient option saves time and ensures all your information is ready when you arrive.
+      </p>
     </div>
     
     <!-- Online Form Iframe -->
-    <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
-      <div class="w-full rounded-xl overflow-hidden" style="height: 1500px !important;">
+    <div class="reveal rounded-3xl p-4 sm:p-6 bg-white/[0.1]">
+      <div class="w-full rounded-2xl overflow-hidden bg-white" style="min-height: 1200px;">
         <iframe 
           src="https://forms.wv3.io/form?packetId=8c3fa3fd-7a4c-455b-a63b-c670bebc377a&companyId=b5107740-a3f2-414c-86e4-abfebcaa1cb6" 
-          class="w-full h-full border-0"
-          style="height: 100% !important; min-height: 1500px !important;"
+          class="w-full border-0"
+          style="min-height: 1200px; height: 100%;"
           title="New Patient Online Form"
           allowfullscreen>
         </iframe>
@@ -55,23 +101,76 @@
   </div>
 </section>
 
-<!-- PDF VIEWER & DOWNLOAD -->
-<section class="py-24 bg-white/10 backdrop-blur-md border-y border-white/20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-start" x-data="{page:1,total:12}">
-    <!-- Embedded PDF -->
-    <div class="reveal w-full h-[32rem] rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-      <iframe :src="'/static/forms/Newpatientpacket.pdf#page='+page" class="w-full h-full" title="New Patient Packet"></iframe>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     PDF DOWNLOAD
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <!-- PDF Preview -->
+      <div class="reveal">
+        <div class="rounded-3xl p-2 overflow-hidden bg-white/[0.1]">
+          <div class="w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden bg-white">
+            <iframe src="/static/forms/Newpatientpacket.pdf" class="w-full h-full" title="New Patient Packet Preview"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Info -->
+      <div class="reveal space-y-6">
+        <span class="badge badge-blue">Printable Version</span>
+        <h2 class="font-display text-4xl font-bold text-white">
+          New Patient <span class="text-gradient-coral">Packet</span>
+        </h2>
+        <p class="text-white/70 leading-relaxed text-lg">
+          Our 12-page PDF covers medical history, consent, and HIPAA privacy. Complete it at home or on any device, then email it to us—or bring a printed copy to your first visit.
+        </p>
+        <p class="text-white/50">
+          If you are unable to print, no worries! You can fill it out at the time of your first appointment.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/static/forms/Newpatientpacket.pdf" download class="btn-premium">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>Download PDF</span>
+          </a>
+          <a href="/static/forms/HIPAA_notice.pdf" download class="btn-outline-premium">
+            <span>HIPAA Notice</span>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Controls & Download -->
-    <div class="reveal space-y-8">
-      <h2 class="text-3xl font-bold text-coral">New Patient Packet</h2>
-      <p class="text-gray-100">Our 12‑page PDF covers medical history, consent, and HIPAA privacy. Complete it at home or on any device, then email it to us—or bring a printed copy to your first visit. If you are unable to print, no worries, we got you covered; you can fill it out at the time of your first appointment. </p>
-
-      <a href="/static/forms/Newpatientpacket.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-coral text-white font-semibold hover:opacity-90">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 16l4-4h-3V4h-2v8H8l4 4zm8 2H4v2h16v-2z"/></svg>
-        Download Full Packet (PDF)
-      </a>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CTA SECTION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal">
+      <h2 class="font-display text-4xl font-bold text-white mb-6">
+        Ready to Get <span class="text-gradient-coral">Started</span>?
+      </h2>
+      <p class="text-lg text-white/60 mb-10 max-w-xl mx-auto">
+        Schedule your first appointment today and experience the Duncan Family Dentistry difference.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/schedule" class="btn-premium text-lg">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Schedule Appointment</span>
+        </a>
+        <a href="tel:+16062370073" class="btn-outline-premium text-lg">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span>Call Us</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

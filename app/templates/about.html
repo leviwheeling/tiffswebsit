@@ -3,110 +3,273 @@
 {% block title %}About Dr. Tiffany Duncan DMD | Belfry KY, South Williamson KY, Williamson WV Dentist | Duncan Family Dentistry{% endblock %}
 
 {% block content %}
-<!-- HERO BANNER -->
-<section class="relative h-60 flex items-center justify-center bg-white/10 backdrop-blur-md border-b border-white/20">
-  <h1 class="reveal text-4xl sm:text-5xl font-extrabold text-white">Meet the Team</h1>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     HERO SECTION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="relative py-16 overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 -left-40 w-80 h-80 bg-coral-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 -right-40 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <span class="reveal badge badge-coral mb-4">Our Story</span>
+    <h1 class="reveal font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+      Meet the <span class="text-gradient-coral">Team</span>
+    </h1>
+    <p class="reveal text-xl text-white/60 max-w-2xl mx-auto">
+      Dedicated professionals committed to your family's dental health for over 25 years
+    </p>
+  </div>
 </section>
 
-<!-- OUR STORY -->
-<section class="py-24">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     OUR STORY
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <article class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-xl text-gray-100 space-y-6">
-      <h2 class="text-3xl font-bold text-coral">Our Story</h2>
-      <p>Duncan Family Dentistry has been proudly serving Belfry KY, South Williamson KY, Williamson WV, and surrounding Eastern Kentucky &amp; Southern West Virginia communities for more than <strong>25&nbsp;years</strong>. Founded by <strong>Dr.&nbsp;Tiffany Duncan DMD</strong>, our mission is simple: deliver state-of-the-art dental care with true hometown warmth.</p>
-      <p>We invest in the latest technology—from Digital Panoramic X-rays to Rotary Endodontics machine; so every visit is efficient, comfortable, and precise. Above all, we treat each patient like family, celebrating milestones and brightening smiles across generations.</p>
-    </article>
-  </div>
-</section>
-
-<!-- DR. DUNCAN PROFILE -->
-<section class="py-24 bg-white/10 backdrop-blur-md border-y border-white/20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
-    <img src="{{ url_for('static', path='forms/img/dr-duncan.jpg') }}" alt="Dr. Tiffany Duncan" class="reveal w-full h-auto object-cover rounded-2xl shadow-xl" style="aspect-ratio: 4/5; max-height: 500px;" />
-    <div class="reveal space-y-4">
-      <h2 class="text-3xl font-bold text-coral">Dr. Tiffany Duncan DMD, PSC</h2>
-      <ul class="list-disc list-inside marker:text-coral text-gray-100">
-        <li><strong>Undergrad:</strong> B.S. Biology – Morehead State University</li>
-        <li><strong>DMD:</strong> University of Louisville School of Dentistry (2000)</li>
-        <li><strong>GPR Residency:</strong> University of Louisville Hospital</li>
-        <li>25+ years in comprehensive family dentistry</li>
-        <li>Member: ADA, KDA</li>
-      </ul>
-      <p>Outside the operatory, Dr.&nbsp;Duncan enjoys beach travel, binge‑worthy TV, and spoiling her Yorkies—Dolly &amp; Diesel. She’s also a proud mom to Brooke &amp; Emily, both pursuing biomedical science degrees at the University of Pikeville.</p>
+    <div class="reveal card-premium p-10 lg:p-12">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-coral-500/10 flex items-center justify-center">
+          <svg class="w-6 h-6 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <h2 class="font-display text-3xl font-bold text-gradient-coral">Our Story</h2>
+      </div>
+      <div class="space-y-6 text-white/70 leading-relaxed text-lg">
+        <p>
+          Duncan Family Dentistry has been proudly serving <strong class="text-white">Belfry KY</strong>, 
+          <strong class="text-white">South Williamson KY</strong>, <strong class="text-white">Williamson WV</strong>, 
+          and surrounding Eastern Kentucky & Southern West Virginia communities for more than 
+          <strong class="text-coral-400">25 years</strong>.
+        </p>
+        <p>
+          Founded by <strong class="text-white">Dr. Tiffany Duncan DMD</strong>, our mission is simple: 
+          deliver state-of-the-art dental care with true hometown warmth.
+        </p>
+        <p>
+          We invest in the latest technology—from Digital Panoramic X-rays to Rotary Endodontics machines—so 
+          every visit is efficient, comfortable, and precise. Above all, we treat each patient like family, 
+          celebrating milestones and brightening smiles across generations.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAMILY PHOTO SPLASH -->
-<section class="py-24">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <figure class="reveal overflow-hidden rounded-2xl shadow-2xl border border-white/20">
-      <img src="{{ url_for('static', path='forms/img/fam.jpg') }}" alt="Dr. Duncan with daughters Brooke and Emily" class="w-full h-auto sm:h-[28rem] object-contain sm:object-cover" />
-      <figcaption class="bg-black/60 backdrop-blur text-gray-100 text-sm py-3 text-center">Dr.&nbsp;Duncan with daughters <strong>Emily</strong> &amp; <strong>Brooke</strong> (Respectively) — the future generation of medical professionals.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- TEAM COLLECTIVE -->
-<section class="py-24 bg-white/5">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="reveal text-center mb-16">
-      <h2 class="text-4xl font-bold text-white mb-4">The Duncan Collective</h2>
-      <p class="text-xl text-gray-200 max-w-3xl mx-auto">Where expertise meets heart! Our unified team brings together decades of experience, cutting-edge training, and genuine care for every patient who walks through our doors.</p>
-    </div>
-    
-    <div class="text-center">
-      <div class="reveal relative group inline-block" x-data="{ isHovered: false }" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
-      <div class="relative overflow-hidden rounded-2xl shadow-2xl border-2 border-white/20 transition-all duration-500 group-hover:border-coral/50 max-w-full">
-        <img src="{{ url_for('static', path='forms/img/team.jpg') }}" 
-             alt="The complete Duncan Family Dentistry team" 
-             class="block w-full h-auto transition-transform duration-700 group-hover:scale-105" />
-        
-        <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-        
-        <!-- Interactive overlay content -->
-        <div class="absolute inset-0 flex items-end justify-center p-8">
-          <div class="text-center text-white transform transition-all duration-500 group-hover:-translate-y-2">
-            <h3 class="text-2xl sm:text-3xl font-bold mb-2" x-text="isHovered ? 'United in Excellence' : 'Our Amazing Team'"></h3>
-            <p class="text-gray-200 text-sm sm:text-base opacity-90" 
-               x-text="isHovered ? 'Every smile tells a story — we\'re here to make yours extraordinary.' : 'Hover to see our mission in action'"></p>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     DR. DUNCAN PROFILE
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0 glass-dark"></div>
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <!-- Image -->
+      <div class="reveal">
+        <div class="relative group">
+          <div class="absolute -inset-4 bg-gradient-to-r from-coral-500/20 to-brand-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <img src="{{ url_for('static', path='forms/img/dr-duncan.jpg') }}" 
+               alt="Dr. Tiffany Duncan, DMD" 
+               class="relative w-full rounded-3xl shadow-2xl object-cover"
+               style="aspect-ratio: 4/5; max-height: 600px;"
+               loading="lazy">
+          <!-- Floating badge -->
+          <div class="absolute -bottom-6 -right-6 card-premium p-4 flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-mint-500/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-mint-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-display font-semibold">25+ Years</div>
+              <div class="text-white/50 text-sm">Experience</div>
+            </div>
           </div>
         </div>
-        
-        <!-- Decorative elements -->
-        <div class="absolute bottom-4 left-4 flex space-x-2">
-          <div class="w-2 h-2 rounded-full bg-coral/60 animate-pulse"></div>
-          <div class="w-2 h-2 rounded-full bg-coral/40 animate-pulse" style="animation-delay: 0.2s;"></div>
-          <div class="w-2 h-2 rounded-full bg-coral/20 animate-pulse" style="animation-delay: 0.4s;"></div>
-        </div>
       </div>
-    </div>
+
+      <!-- Content -->
+      <div class="reveal space-y-6">
+        <span class="badge badge-coral">Lead Dentist</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-white">
+          Dr. Tiffany Duncan <span class="text-gradient-coral">DMD, PSC</span>
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-medium">Education</div>
+              <div class="text-white/60 text-sm">B.S. Biology – Morehead State University<br>DMD – University of Louisville School of Dentistry (2000)</div>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-coral-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-coral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-medium">Training</div>
+              <div class="text-white/60 text-sm">GPR Residency – University of Louisville Hospital</div>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-mint-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-mint-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-medium">Memberships</div>
+              <div class="text-white/60 text-sm">American Dental Association (ADA)<br>Kentucky Dental Association (KDA)</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-white/70 leading-relaxed">
+          Outside the operatory, Dr. Duncan enjoys beach travel, binge-worthy TV, and spoiling her Yorkies—Dolly & Diesel. 
+          She's also a proud mom to Brooke & Emily, both pursuing biomedical science degrees at the University of Pikeville.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TEAM GRID -->
-<section class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="reveal text-3xl font-bold text-white mb-12">The Friendly Faces Behind Your Smile</h2>
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      {% set staff=[
-        {'name':'Trinity Queen','role':'Insurance Coordinator','years':'2 years','img':'trinity.jpg'},
-        {'name':'Tiffany Robinette','role':'Scheduling Coordinator','years':'2 years','img':'tiffany-r.jpg'},
-        {'name':'Marsha Whitt','role':'Dental Assistant','years':'2 years','img':'marsha.jpg'},
-        {'name':'Michelle Tackett, RDH','role':'Dental Hygienist','years':'1 year','img':'michelle.jpg'},
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FAMILY PHOTO
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal">
+      <figure class="relative group">
+        <div class="absolute -inset-4 bg-gradient-to-r from-coral-500/10 to-brand-500/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative overflow-hidden rounded-3xl border border-white/10">
+          <img src="{{ url_for('static', path='forms/img/fam.jpg') }}" 
+               alt="Dr. Duncan with daughters Brooke and Emily" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-925 via-transparent to-transparent"></div>
+          <figcaption class="absolute bottom-0 left-0 right-0 p-6 text-center">
+            <p class="text-white font-display font-medium">Dr. Duncan with daughters <span class="text-coral-400">Emily</span> & <span class="text-coral-400">Brooke</span></p>
+            <p class="text-white/50 text-sm mt-1">The future generation of medical professionals</p>
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     TEAM PHOTO
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
+  
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="reveal badge badge-blue mb-4">United in Excellence</span>
+      <h2 class="reveal font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+        The Duncan <span class="text-gradient-blue">Collective</span>
+      </h2>
+      <p class="reveal text-lg text-white/60 max-w-2xl mx-auto">
+        Where expertise meets heart! Our unified team brings together decades of experience, 
+        cutting-edge training, and genuine care for every patient.
+      </p>
+    </div>
+
+    <div class="reveal">
+      <div class="relative group cursor-pointer" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
+        <div class="absolute -inset-4 bg-gradient-to-r from-coral-500/20 to-brand-500/20 rounded-3xl blur-2xl transition-opacity duration-500" :class="hover ? 'opacity-100' : 'opacity-0'"></div>
+        <div class="relative overflow-hidden rounded-3xl border-2 border-white/10 transition-all duration-500" :class="hover ? 'border-coral-500/30' : ''">
+          <img src="{{ url_for('static', path='forms/img/team.jpg') }}" 
+               alt="The complete Duncan Family Dentistry team" 
+               class="w-full h-auto transition-transform duration-700"
+               :class="hover ? 'scale-105' : ''"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-925/90 via-slate-925/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8 text-center">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-2 transition-all duration-300" x-text="hover ? 'Every smile tells a story' : 'Our Amazing Team'"></h3>
+            <p class="text-white/60" x-text="hover ? 'We\'re here to make yours extraordinary' : 'Dedicated to your dental health'"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     TEAM GRID
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="reveal font-display text-4xl font-bold text-white mb-4">
+        The Friendly Faces Behind <span class="text-gradient-coral">Your Smile</span>
+      </h2>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 stagger-children">
+      {% set staff = [
+        {'name':'Trinity Queen','role':'Insurance & Scheduling Coordinator','years':'2 years','img':'trinity.jpg','color':'coral'},
+        {'name':'Marsha Whitt','role':'Dental Assistant','years':'2 years','img':'marsha.jpg','color':'mint'},
+        {'name':'Michelle Tackett, RDH','role':'Dental Hygienist','years':'1 year','img':'michelle.jpg','color':'coral'}
       ] %}
       {% for m in staff %}
-      <div class="reveal bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 shadow-lg flex flex-col items-center hover:shadow-2xl transition-transform hover:-translate-y-1">
-        <div class="w-40 h-40 rounded-full overflow-hidden shadow mb-4 flex-shrink-0" style="aspect-ratio: 1/1;">
-          <img src="{{ url_for('static', path='forms/img/' + m.img) }}" alt="{{m.name}}" class="w-full h-full object-cover object-center" />
+      <div class="card-premium p-6 text-center group">
+        <div class="relative mb-6 mx-auto w-32 h-32">
+          <div class="absolute inset-0 rounded-full transition-all duration-300
+                      {% if m.color == 'coral' %}bg-coral-500/20 group-hover:bg-coral-500/40 group-hover:shadow-[0_0_40px_-5px_rgba(240,100,90,0.5)]
+                      {% elif m.color == 'brand' %}bg-brand-500/20 group-hover:bg-brand-500/40 group-hover:shadow-[0_0_40px_-5px_rgba(0,104,207,0.5)]
+                      {% else %}bg-mint-500/20 group-hover:bg-mint-500/40 group-hover:shadow-[0_0_40px_-5px_rgba(28,173,125,0.5)]{% endif %}"></div>
+          <img src="{{ url_for('static', path='forms/img/' + m.img) }}" 
+               alt="{{ m.name }}, {{ m.role }}"
+               class="relative w-full h-full object-cover rounded-full border-2 border-white/10 transition-transform duration-300 group-hover:scale-105"
+               loading="lazy">
         </div>
-        <h3 class="text-lg font-semibold text-white">{{m.name}}</h3>
-        <p class="text-coral text-sm">{{m.role}}</p>
-        <p class="text-gray-200 text-xs mt-1">{{m.years}} at DFD</p>
+        <h3 class="font-display text-lg font-semibold text-white mb-1">{{ m.name }}</h3>
+        <p class="text-sm {% if m.color == 'coral' %}text-coral-400{% elif m.color == 'brand' %}text-brand-400{% else %}text-mint-400{% endif %} mb-2">{{ m.role }}</p>
+        <p class="text-xs text-white/40">{{ m.years }} at DFD</p>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CTA SECTION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="reveal card-premium p-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
+        Ready to Join Our <span class="text-gradient-coral">Family</span>?
+      </h2>
+      <p class="text-lg text-white/60 mb-8 max-w-xl mx-auto">
+        Experience the Duncan difference. Schedule your appointment today and see why families trust us with their smiles.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/schedule" class="btn-premium">
+          <span>Schedule Appointment</span>
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="/contact" class="btn-outline-premium">
+          <span>Contact Us</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

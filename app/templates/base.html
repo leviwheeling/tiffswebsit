@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,6 +18,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', path='forms/img/tooth.png') }}">
   <link rel="shortcut icon" href="{{ url_for('static', path='forms/img/tooth.png') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', path='forms/img/tooth.png') }}">
+
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 
   <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKDLQDSC7R"></script>
@@ -99,145 +104,300 @@
   }
   </script>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <link rel="stylesheet" href="{{ url_for('static', path='assets/site.css') }}" />
-  <!-- Alpine -->
+  
+  <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Animated gradient + helpers -->
-  <style>
-    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
-      background:linear-gradient(120deg,#001b44 0%,#003c95 25%,#007fa2 55%,#00b8b1 80%,#ff7360 100%);
-      background-size:300% 300%;animation:gradientShift 90s ease infinite}
-    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;
-      background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 0);
-      background-size:2px 2px;opacity:.05;pointer-events:none}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none}}
-    .reveal{opacity:0}.revealed{animation:fadeUp .8s cubic-bezier(.23,1,.32,1) forwards}
-    .nav-glass{background:rgba(0,0,0,.55);backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.1)}
-    .hc body::before,.hc body::after{display:none}
-    #page-transition{transition:opacity .25s ease;pointer-events:none}
-
-  </style>
 </head>
-<body x-data="appState()" x-init="initReveal();initPageTransition()"
-      :class="{'hc':highContrast}"
-      class="font-sans antialiased min-h-screen flex flex-col text-gray-50 selection:bg-coral/70 selection:text-white">
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 p-2 bg-brand text-white rounded-lg">
+<body x-data="appState()" x-init="initReveal()" 
+      class="font-sans antialiased min-h-screen flex flex-col text-white overflow-x-hidden">
+
+  <!-- Noise Overlay for texture -->
+  <div class="noise-overlay"></div>
+
+  <!-- Skip to content -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-coral-500 text-white rounded-lg font-medium">
     Skip to content
   </a>
 
-  <!-- NAVBAR -->
-  <header class="nav-glass sticky top-0 z-50" x-data="{open:false}">
-    <div class="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-      <a href="/" class="group flex items-center space-x-2 select-none">
-        <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
-             alt="" class="h-6 w-6 drop-shadow-sm">
-        <span class="text-lg sm:text-xl font-bold tracking-wide">
-          <span class="bg-gradient-to-r from-coral via-rose-400 to-orange-300 bg-clip-text text-transparent transition-colors group-hover:from-coral group-hover:to-coral">
-            Duncan
-          </span>
-          <span class="ml-0.5 transition-colors group-hover:text-coral">
-            Family&nbsp;Dentistry
-          </span>
-        </span>
-      </a>
-      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="/"             class="hover:text-coral">Home</a>
-        <a href="/about"        class="hover:text-coral">About</a>
-        <a href="/services"     class="hover:text-coral">Services</a>
-        <a href="/schedule"     class="hover:text-coral">Scheduling</a>
-        <a href="/pay-bill"     class="hover:text-coral">Pay A Bill</a>
-        <a href="/insurance"    class="hover:text-coral">Insurance</a>
-        <a href="/new-patients" class="hover:text-coral">New Patients</a>
-        <a href="/careers"      class="hover:text-coral">Careers</a>
-        <a href="/location"     class="hover:text-coral">Location</a>
-        <a href="/contact"      class="hover:text-coral">Contact</a>
-      </nav>
-      <button @click="open=!open"
-              class="md:hidden p-2 text-white hover:bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-             fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PREMIUM NAVIGATION
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <header class="nav-premium" x-data="{ open: false, scrolled: false }" 
+          @scroll.window="scrolled = window.scrollY > 50"
+          :class="{ 'shadow-2xl': scrolled }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="/" class="group flex items-center gap-3 select-none">
+          <div class="relative">
+            <div class="absolute inset-0 bg-coral-500/30 rounded-xl blur-lg group-hover:bg-coral-500/50 transition-all duration-300"></div>
+            <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
+                 alt="Duncan Family Dentistry" 
+                 class="relative h-10 w-10 drop-shadow-lg transition-transform duration-300 group-hover:scale-110">
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-display font-bold tracking-tight">
+              <span class="text-gradient-coral">Duncan</span>
+              <span class="text-white"> Family</span>
+            </span>
+            <span class="text-xs text-white/50 font-medium tracking-widest uppercase">Dentistry</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-1" role="navigation" aria-label="Main navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/about" class="nav-link">About</a>
+          <a href="/services" class="nav-link">Services</a>
+          <a href="/insurance" class="nav-link">Insurance</a>
+          <a href="/new-patients" class="nav-link">New Patients</a>
+          <a href="/location" class="nav-link">Location</a>
+          <a href="/contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- CTA Buttons -->
+        <div class="hidden lg:flex items-center gap-2">
+          <a href="tel:+16062370073" class="group relative px-3 py-2 rounded-lg text-xs font-medium text-white/80 hover:text-white transition-all duration-300 backdrop-blur-xl bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-slate-900/60 hover:from-slate-800/80 hover:via-slate-700/60 hover:to-slate-800/80 hover:shadow-lg flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-brand-400 group-hover:text-brand-300 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span class="whitespace-nowrap">(606) 237-0073</span>
+          </a>
+          <a href="/schedule" class="group relative px-4 py-2 rounded-lg text-xs font-semibold text-white transition-all duration-300 bg-gradient-to-r from-coral-500 via-coral-500 to-coral-600 hover:from-coral-400 hover:via-coral-500 hover:to-coral-500 shadow-lg hover:shadow-xl hover:shadow-coral-500/30 hover:-translate-y-0.5 flex items-center gap-1.5 whitespace-nowrap">
+            <span>Book Now</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button @click="open = !open" 
+                class="lg:hidden p-2 rounded-xl glass transition-all duration-300"
+                :class="{ 'bg-white/20': open }"
+                aria-label="Toggle menu"
+                :aria-expanded="open">
+          <svg class="w-6 h-6 transition-transform duration-300" :class="{ 'rotate-90': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path x-show="open" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Mobile drawer -->
-    <div x-show="open" x-transition class="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
-      <nav class="px-4 py-4 space-y-2 text-base font-medium">
-        <a @click="open=false" href="/"             class="block text-gray-100 hover:text-coral">Home</a>
-        <a @click="open=false" href="/about"        class="block text-gray-100 hover:text-coral">About</a>
-        <a @click="open=false" href="/services"     class="block text-gray-100 hover:text-coral">Services</a>
-        <a @click="open=false" href="/schedule"     class="block text-gray-100 hover:text-coral">Scheduling</a>
-        <a @click="open=false" href="/pay-bill"     class="block text-gray-100 hover:text-coral">Pay A Bill</a>
-        <a @click="open=false" href="/insurance"    class="block text-gray-100 hover:text-coral">Insurance</a>
-        <a @click="open=false" href="/new-patients" class="block text-gray-100 hover:text-coral">New Patients</a>
-        <a @click="open=false" href="/careers"      class="block text-gray-100 hover:text-coral">Careers</a>
-        <a @click="open=false" href="/location"     class="block text-gray-100 hover:text-coral">Location</a>
-        <a @click="open=false" href="/contact"      class="block text-gray-100 hover:text-coral">Contact</a>
+    <!-- Mobile Menu -->
+    <div x-show="open" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         x-cloak
+         class="lg:hidden glass-dark">
+      <nav class="max-w-7xl mx-auto px-4 py-6 space-y-1">
+        <a @click="open = false" href="/" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Home</a>
+        <a @click="open = false" href="/about" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">About</a>
+        <a @click="open = false" href="/services" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Services</a>
+        <a @click="open = false" href="/insurance" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Insurance</a>
+        <a @click="open = false" href="/new-patients" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">New Patients</a>
+        <a @click="open = false" href="/schedule" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Schedule</a>
+        <a @click="open = false" href="/pay-bill" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Pay Bill</a>
+        <a @click="open = false" href="/location" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Location</a>
+        <a @click="open = false" href="/contact" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Contact</a>
+        
+        <div class="pt-4 flex flex-col gap-3">
+          <a href="tel:+16062370073" class="group px-5 py-3 rounded-xl text-sm font-medium text-white/90 hover:text-white transition-all duration-300 backdrop-blur-xl bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-slate-900/60 hover:from-slate-800/80 hover:via-slate-700/60 hover:to-slate-800/80 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 text-brand-400 group-hover:text-brand-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>(606) 237-0073</span>
+          </a>
+          <a href="/schedule" class="px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-coral-500 via-coral-500 to-coral-600 hover:from-coral-400 hover:via-coral-500 hover:to-coral-500 shadow-lg hover:shadow-xl flex items-center justify-center">
+            <span>Book Appointment</span>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="flex-1">{% block content %}{% endblock %}</main>
+  <!-- UNIFIED BACKGROUND - Covers entire page -->
+  <div class="fixed inset-0 bg-slate-925 -z-10"></div>
 
-  <!-- FOOTER -->
-  <footer class="nav-glass mt-24 text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-3">
-      <div>
-        <h2 class="text-lg font-semibold text-coral mb-2">Contact</h2>
-        <p>79 Mall Rd, Suite B<br>South Williamson, KY&nbsp;41503</p>
-        <p class="mt-2">Phone: <a href="tel:+16062370073" class="underline">(606) 237-0073</a><br>
-           Email: <a href="mailto:duncanfamilydentistry@gmail.com" class="underline">
-           info@duncanfamilydentistry.com</a></p>
-      </div>
-      <div>
-        <h2 class="text-lg font-semibold text-coral mb-2">Hours</h2>
-        <p>Mon–Thu 8 am–5 pm<br>Fri 8 am–3 pm (hygienist only)</p>
-      </div>
-      <div>
-        <h2 class="text-lg font-semibold text-coral mb-2">Quick Links</h2>
-        <ul class="space-y-1">
-          <li><a href="/services"      class="underline hover:text-coral">Services</a></li>
-          <li><a href="/schedule"      class="underline hover:text-coral">Scheduling</a></li>
-          <li><a href="/pay-bill"      class="underline hover:text-coral">Pay A Bill</a></li>
-          <li><a href="/insurance"     class="underline hover:text-coral">Insurance</a></li>
-          <li><a href="/new-patients"  class="underline hover:text-coral">New Patients</a></li>
-          <li><a href="/location"      class="underline hover:text-coral">Location</a></li>
-          <li><a href="/privacy"       class="underline hover:text-coral">Privacy</a></li>
-          <li><a href="/sitemap.xml"   class="underline hover:text-coral">Sitemap</a></li>
-        </ul>
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <main id="main" class="flex-1 pt-20">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PREMIUM FOOTER
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <footer class="relative mt-32 overflow-hidden">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-925 via-slate-925/95 to-transparent pointer-events-none"></div>
+    
+    <!-- Decorative blobs -->
+    <div class="absolute -top-40 -left-40 w-80 h-80 bg-coral-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl"></div>
+    
+    <div class="relative glass-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid gap-12 lg:grid-cols-4">
+          
+          <!-- Brand Column -->
+          <div class="lg:col-span-1">
+            <a href="/" class="flex items-center gap-3 mb-6">
+              <img src="{{ url_for('static', path='forms/img/tooth.png') }}" alt="" class="h-10 w-10">
+              <div>
+                <span class="text-xl font-display font-bold text-gradient-coral">Duncan</span>
+                <span class="text-xl font-display font-bold text-white"> Family</span>
+              </div>
+            </a>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">
+              Providing exceptional dental care to Eastern Kentucky & Southern West Virginia families for over 25 years.
+            </p>
+            <div class="flex gap-3">
+              <a href="https://www.facebook.com/people/Tiffany-Todd-Duncan-DMD/61562745692581/" target="_blank" rel="noopener" 
+                 class="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Column -->
+          <div>
+            <h3 class="font-display font-semibold text-white mb-6">Contact</h3>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-start gap-3 text-white/60">
+                <svg class="w-5 h-5 text-coral-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span>79 Mall Rd, Suite B<br>South Williamson, KY 41503</span>
+              </li>
+              <li>
+                <a href="tel:+16062370073" class="flex items-center gap-3 text-white/60 hover:text-coral-400 transition-colors">
+                  <svg class="w-5 h-5 text-coral-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                  <span>(606) 237-0073</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:duncanfamilydentistry@gmail.com" class="flex items-center gap-3 text-white/60 hover:text-coral-400 transition-colors">
+                  <svg class="w-5 h-5 text-coral-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  <span>info@duncanfamilydentistry.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hours Column -->
+          <div>
+            <h3 class="font-display font-semibold text-white mb-6">Office Hours</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between items-center gap-4">
+                <span class="text-white/60">Monday – Thursday</span>
+                <span class="text-white font-medium">8am – 5pm</span>
+              </li>
+              <li class="flex justify-between items-center gap-4">
+                <span class="text-white/60">Friday</span>
+                <span class="text-white font-medium">8am – 3pm</span>
+              </li>
+              <li class="flex justify-between items-center gap-4">
+                <span class="text-white/60">Saturday – Sunday</span>
+                <span class="text-white/40 font-medium">Closed</span>
+              </li>
+            </ul>
+            <p class="mt-4 text-xs text-white/40">Friday: Hygienist only</p>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div>
+            <h3 class="font-display font-semibold text-white mb-6">Quick Links</h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="/services" class="text-white/60 hover:text-coral-400 transition-colors">Our Services</a></li>
+              <li><a href="/schedule" class="text-white/60 hover:text-coral-400 transition-colors">Book Appointment</a></li>
+              <li><a href="/pay-bill" class="text-white/60 hover:text-coral-400 transition-colors">Pay Your Bill</a></li>
+              <li><a href="/insurance" class="text-white/60 hover:text-coral-400 transition-colors">Insurance Info</a></li>
+              <li><a href="/new-patients" class="text-white/60 hover:text-coral-400 transition-colors">New Patient Forms</a></li>
+              <li><a href="/careers" class="text-white/60 hover:text-coral-400 transition-colors">Careers</a></li>
+              <li><a href="/privacy" class="text-white/60 hover:text-coral-400 transition-colors">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-white/40">
+            © {{ now().year }} Duncan Family Dentistry. All rights reserved.
+          </p>
+          <div class="flex items-center gap-6 text-sm text-white/40">
+            <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
+            <a href="/sitemap.xml" class="hover:text-white transition-colors">Sitemap</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="text-center py-4 bg-black/60">© {{ now().year }} Duncan Family Dentistry.</div>
   </footer>
 
-  <!-- Scroll-to-top -->
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SCROLL TO TOP BUTTON
+       ═══════════════════════════════════════════════════════════════════════ -->
   <button x-show="showTop"
-          x-transition.opacity x-transition.scale.90
-          @click="window.scrollTo({top:0,behavior:'smooth'})"
-          class="fixed bottom-6 right-6 p-3 rounded-full bg-coral text-white shadow-lg hover:shadow-2xl focus:outline-none">↑</button>
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 translate-y-4 scale-90"
+          x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 scale-90"
+          @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+          class="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-xl bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 hover:from-coral-500/20 hover:via-brand-500/20 hover:to-mint-500/20 transition-all duration-300 hover:scale-110 hover:shadow-[0_10px_40px_-10px_rgba(240,100,90,0.4)] group"
+          aria-label="Scroll to top">
+    <svg class="w-6 h-6 text-white group-hover:text-coral-400 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
 
-  <div id="page-transition" class="fixed inset-0 bg-black opacity-0 z-50"></div>
-
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════════════════════════════════════ -->
   <script>
-    function appState(){return{highContrast:false,fontSize:16,showTop:false,
-      init(){document.documentElement.style.fontSize=this.fontSize+'px';
-            window.addEventListener('scroll',()=>this.showTop=window.scrollY>400);}}}
-    function initReveal(){const o=new IntersectionObserver(e=>{
-      e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('revealed');o.unobserve(t.target);}})},{threshold:.15});
-      document.querySelectorAll('.reveal').forEach(e=>o.observe(e));}
-    function initPageTransition(){const overlay=document.getElementById('page-transition');
-      window.addEventListener('pageshow',()=>{overlay.style.opacity=0});
-      document.querySelectorAll('a[href]:not([target]):not([href^="mailto:"]):not([href^="tel:"])')
-        .forEach(a=>a.addEventListener('click',e=>{
-          if(a.href.startsWith(window.location.origin)){e.preventDefault();
-            overlay.style.opacity=1;setTimeout(()=>window.location=a.href,250);}}));}
+    function appState() {
+      return {
+        showTop: false,
+        init() {
+          window.addEventListener('scroll', () => {
+            this.showTop = window.scrollY > 500;
+          });
+        }
+      }
+    }
+
+    function initReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal, .stagger-children').forEach(el => observer.observe(el));
+    }
   </script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+  </style>
 </body>
 </html>
