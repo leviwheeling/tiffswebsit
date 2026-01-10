@@ -45,9 +45,9 @@
           {'num': '2', 'title': 'Insurance Verification', 'desc': 'Please bring Photo ID! Email front and back, or bring your insurance card—our team confirms benefits before your appointment.', 'color': 'brand'},
           {'num': '3', 'title': 'Comprehensive Exam & X-Rays', 'desc': 'Digital dental x-rays and a gentle exam let us get the full picture of your oral health.', 'color': 'mint'},
           {'num': '4', 'title': 'Personalized Treatment Plan', 'desc': 'We review findings, answer questions, and map out next steps together.', 'color': 'coral'}
-        ] %}
+      ] %}
         
-        {% for s in steps %}
+      {% for s in steps %}
         <div class="relative flex gap-6 sm:gap-8">
           <!-- Number -->
           <div class="relative z-10 flex-shrink-0">
@@ -65,7 +65,7 @@
             <p class="text-white/60 leading-relaxed">{{ s.desc }}</p>
           </div>
         </div>
-        {% endfor %}
+      {% endfor %}
       </div>
     </div>
   </div>

@@ -135,7 +135,7 @@
         <a href="/" class="group flex items-center gap-3 select-none">
           <div class="relative">
             <div class="absolute inset-0 bg-coral-500/30 rounded-xl blur-lg group-hover:bg-coral-500/50 transition-all duration-300"></div>
-            <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
+        <img src="{{ url_for('static', path='forms/img/tooth.png') }}"
                  alt="Duncan Family Dentistry" 
                  class="relative h-10 w-10 drop-shadow-lg transition-transform duration-300 group-hover:scale-110">
           </div>
@@ -143,10 +143,10 @@
             <span class="text-xl font-display font-bold tracking-tight">
               <span class="text-gradient-coral">Duncan</span>
               <span class="text-white"> Family</span>
-            </span>
+          </span>
             <span class="text-xs text-white/50 font-medium tracking-widest uppercase">Dentistry</span>
           </div>
-        </a>
+      </a>
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center gap-1" role="navigation" aria-label="Main navigation">
@@ -156,8 +156,9 @@
           <a href="/insurance" class="nav-link">Insurance</a>
           <a href="/new-patients" class="nav-link">New Patients</a>
           <a href="/location" class="nav-link">Location</a>
+          <a href="/careers" class="nav-link">Careers</a>
           <a href="/contact" class="nav-link">Contact</a>
-        </nav>
+      </nav>
 
         <!-- CTA Buttons -->
         <div class="hidden lg:flex items-center gap-2">
@@ -184,8 +185,8 @@
           <svg class="w-6 h-6 transition-transform duration-300" :class="{ 'rotate-90': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             <path x-show="open" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
+        </svg>
+      </button>
       </div>
     </div>
 
@@ -208,6 +209,7 @@
         <a @click="open = false" href="/schedule" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Schedule</a>
         <a @click="open = false" href="/pay-bill" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Pay Bill</a>
         <a @click="open = false" href="/location" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Location</a>
+        <a @click="open = false" href="/careers" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Careers</a>
         <a @click="open = false" href="/contact" class="block px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all">Contact</a>
         
         <div class="pt-4 flex flex-col gap-3">
@@ -271,7 +273,7 @@
           </div>
 
           <!-- Contact Column -->
-          <div>
+      <div>
             <h3 class="font-display font-semibold text-white mb-6">Contact</h3>
             <ul class="space-y-4 text-sm">
               <li class="flex items-start gap-3 text-white/60">
@@ -298,10 +300,10 @@
                 </a>
               </li>
             </ul>
-          </div>
+      </div>
 
           <!-- Hours Column -->
-          <div>
+      <div>
             <h3 class="font-display font-semibold text-white mb-6">Office Hours</h3>
             <ul class="space-y-3 text-sm">
               <li class="flex justify-between items-center gap-4">
@@ -318,10 +320,10 @@
               </li>
             </ul>
             <p class="mt-4 text-xs text-white/40">Friday: Hygienist only</p>
-          </div>
+      </div>
 
           <!-- Quick Links Column -->
-          <div>
+      <div>
             <h3 class="font-display font-semibold text-white mb-6">Quick Links</h3>
             <ul class="space-y-3 text-sm">
               <li><a href="/services" class="text-white/60 hover:text-coral-400 transition-colors">Our Services</a></li>
@@ -331,7 +333,7 @@
               <li><a href="/new-patients" class="text-white/60 hover:text-coral-400 transition-colors">New Patient Forms</a></li>
               <li><a href="/careers" class="text-white/60 hover:text-coral-400 transition-colors">Careers</a></li>
               <li><a href="/privacy" class="text-white/60 hover:text-coral-400 transition-colors">Privacy Policy</a></li>
-            </ul>
+        </ul>
           </div>
         </div>
 

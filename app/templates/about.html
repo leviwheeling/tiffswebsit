@@ -166,7 +166,7 @@
             <p class="text-white/50 text-sm mt-1">The future generation of medical professionals</p>
           </figcaption>
         </div>
-      </figure>
+    </figure>
     </div>
   </div>
 </section>
@@ -188,13 +188,13 @@
         cutting-edge training, and genuine care for every patient.
       </p>
     </div>
-
+    
     <div class="reveal">
       <div class="relative group cursor-pointer" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
         <div class="absolute -inset-4 bg-gradient-to-r from-coral-500/20 to-brand-500/20 rounded-3xl blur-2xl transition-opacity duration-500" :class="hover ? 'opacity-100' : 'opacity-0'"></div>
         <div class="relative overflow-hidden rounded-3xl border-2 border-white/10 transition-all duration-500" :class="hover ? 'border-coral-500/30' : ''">
-          <img src="{{ url_for('static', path='forms/img/team.jpg') }}" 
-               alt="The complete Duncan Family Dentistry team" 
+        <img src="{{ url_for('static', path='forms/img/team.jpg') }}" 
+             alt="The complete Duncan Family Dentistry team" 
                class="w-full h-auto transition-transform duration-700"
                :class="hover ? 'scale-105' : ''"
                loading="lazy">
@@ -202,9 +202,9 @@
           <div class="absolute bottom-0 left-0 right-0 p-8 text-center">
             <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-2 transition-all duration-300" x-text="hover ? 'Every smile tells a story' : 'Our Amazing Team'"></h3>
             <p class="text-white/60" x-text="hover ? 'We\'re here to make yours extraordinary' : 'Dedicated to your dental health'"></p>
-          </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>

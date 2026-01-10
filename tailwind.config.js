@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/templates/**/*.html",
-    "./app/static/js/**/*.js"
-  ],
-  theme: {
-    extend: {
-      colors: {
+    content: [
+      "./app/templates/**/*.html",
+      "./app/static/js/**/*.js"
+    ],
+    theme: {
+      extend: {
+        colors: {
         // Premium dental palette - sophisticated & trustworthy
         brand: {
           50: "#f0f7ff",
@@ -51,8 +51,8 @@ module.exports = {
           850: "#172033",
           925: "#0d1424",
         },
-      },
-      fontFamily: {
+        },
+        fontFamily: {
         // Premium typography
         display: ["Outfit", "ui-sans-serif", "system-ui", "sans-serif"],
         sans: ["DM Sans", "ui-sans-serif", "system-ui", "sans-serif"],
@@ -169,8 +169,9 @@ module.exports = {
       transitionTimingFunction: {
         "bounce-in": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
         "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
+        },
       },
     },
-  },
-  plugins: [require('@tailwindcss/forms')],
-};
+    plugins: [require('@tailwindcss/forms')],
+  };
+  

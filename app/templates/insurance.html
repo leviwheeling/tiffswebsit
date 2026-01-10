@@ -29,7 +29,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 stagger-children">
 
-      {% set plans = [
+{% set plans = [
         ('Aetna', 'aetna.png', 'https://www.aetna.com'),
         ('Ameritas', 'ameritas.png', 'https://www.ameritas.com'),
         ('Anthem (BlueCross BlueShield)', 'anthem.png', 'https://www.anthem.com'),
@@ -47,10 +47,10 @@
         ('Principal', 'principal.png', 'https://www.principal.com'),
         ('Sun Life', 'sunlife.png', 'https://www.sunlife.com/us'),
         ('United Concordia Dental', 'united-concordia.png', 'https://www.unitedconcordia.com')
-      ] %}
+] %}
 
-      {% for name, logo, url in plans %}
-      {% set words = name.replace('(', '').replace(')', '').split() %}
+{% for name, logo, url in plans %}
+  {% set words = name.replace('(', '').replace(')', '').split() %}
       {% set abbr = (words[0][0] ~ (words[1][0] if words|length > 1 else '')).upper() %}
 
       <a href="{{ url }}" target="_blank" rel="noopener noreferrer"
@@ -62,11 +62,11 @@
           <!-- Fallback badge (shown if image fails) -->
           <div class="badge-fallback h-16 w-16 rounded-2xl flex items-center justify-center
                       text-lg font-display font-bold text-white bg-gradient-to-br from-coral-500 to-coral-600 hidden">
-            {{ abbr }}
-          </div>
+      {{ abbr }}
+    </div>
 
           <!-- Logo -->
-          <img src="{{ url_for('static', path='forms/img/' + logo) }}"
+    <img src="{{ url_for('static', path='forms/img/' + logo) }}"
                alt="{{ name }} logo"
                class="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
                loading="lazy"
@@ -75,8 +75,8 @@
         </div>
 
         <span class="text-sm font-semibold text-white mt-auto" style="color: #ffffff !important;">{{ name }}</span>
-      </a>
-      {% endfor %}
+  </a>
+{% endfor %}
     </div>
 
     <!-- Don't see your carrier -->

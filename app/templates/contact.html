@@ -30,54 +30,54 @@
         <div class="card-premium p-8 lg:p-10">
           <h2 class="font-display text-2xl font-bold text-white mb-2">Request an Appointment</h2>
           <p class="text-white/60 mb-8">
-            Fill out the form and our front-desk team will reach out soon.
-            For a quicker response, please call
+        Fill out the form and our front-desk team will reach out soon.
+        For a quicker response, please call
             <a href="tel:+16062370073" class="text-coral-400 hover:text-coral-300 transition-colors">(606) 237-0073</a>.
-          </p>
+      </p>
 
           <form action="https://formspree.io/f/xzzvzdwe" method="POST" class="space-y-6" x-data="{ submitting: false }" @submit="submitting = true">
             <input type="hidden" name="_subject" value="Website Appointment Request">
             <input type="hidden" name="_redirect" value="/thanks">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-            <div class="grid sm:grid-cols-2 gap-6">
+        <div class="grid sm:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-sm font-medium text-white/80 mb-2">Full Name *</label>
-                <input type="text" id="name" name="name" required
+            <input type="text" id="name" name="name" required
                        class="input-premium"
                        placeholder="John Doe">
-              </div>
+          </div>
               <div>
                 <label for="phone" class="block text-sm font-medium text-white/80 mb-2">Phone *</label>
-                <input type="tel" id="phone" name="phone" required
+            <input type="tel" id="phone" name="phone" required
                        class="input-premium"
                        placeholder="(606) 555-1234">
-              </div>
-            </div>
+          </div>
+        </div>
 
             <div>
               <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email *</label>
-              <input type="email" id="email" name="email" required
+          <input type="email" id="email" name="email" required
                      class="input-premium"
                      placeholder="john@example.com">
-            </div>
+        </div>
 
             <div>
               <label for="preferred_date" class="block text-sm font-medium text-white/80 mb-2">Preferred Date</label>
-              <input type="date" id="preferred_date" name="preferred_date"
+          <input type="date" id="preferred_date" name="preferred_date"
                      class="input-premium">
-            </div>
+        </div>
 
             <div>
               <label for="message" class="block text-sm font-medium text-white/80 mb-2">
                 Message <span class="text-white/40 text-xs">(Please do not include Protected Health Information)</span>
-              </label>
-              <textarea id="message" name="message" rows="4"
+          </label>
+          <textarea id="message" name="message" rows="4"
                         class="input-premium resize-y"
                         placeholder="Tell us how we can help..."></textarea>
-            </div>
+        </div>
 
-            <button type="submit"
+        <button type="submit"
                     :disabled="submitting"
                     class="btn-premium w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
               <svg x-show="!submitting" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,20 +88,20 @@
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
               <span x-text="submitting ? 'Sending...' : 'Send Request'"></span>
-            </button>
-          </form>
+        </button>
+      </form>
         </div>
-      </div>
+    </div>
 
       <!-- Map & Info -->
-      <div class="reveal space-y-6">
+    <div class="reveal space-y-6">
         <!-- Map -->
         <div class="card-premium p-2 overflow-hidden">
           <div class="w-full h-80 rounded-2xl overflow-hidden">
-            <iframe class="w-full h-full" loading="lazy" allowfullscreen
-                    title="Map to Duncan Family Dentistry"
-                    src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503&t=&z=15&ie=UTF8&iwloc=&output=embed">
-            </iframe>
+        <iframe class="w-full h-full" loading="lazy" allowfullscreen
+                title="Map to Duncan Family Dentistry"
+                src="https://maps.google.com/maps?q=79%20Mall%20Rd%20Ste%20B%20South%20Williamson%20KY%2041503&t=&z=15&ie=UTF8&iwloc=&output=embed">
+        </iframe>
           </div>
         </div>
 
@@ -147,7 +147,7 @@
             <h3 class="font-display font-semibold text-white mb-2">Hours</h3>
             <p class="text-white/60 text-sm">Mon–Thu: 8am–5pm<br>Fri: 8am–3pm</p>
           </div>
-        </div>
+      </div>
 
         <!-- Emergency Notice -->
         <div class="card-premium p-6 border-coral-500/30 bg-coral-500/5">
