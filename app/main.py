@@ -66,13 +66,17 @@ async def careers(request: Request):
 async def thanks(request: Request):
     return templates.TemplateResponse("thanks.html", {"request": request})
 
+@app.get("/financing", include_in_schema=False)
+async def financing(request: Request):
+    return templates.TemplateResponse("financing.html", {"request": request})
+
 # ── SITEMAP & ROBOTS ─────────────────────────────────────────────────────────
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap_xml(request: Request):
     base = str(request.base_url).rstrip("/")
     urls = [
         "/", "/about", "/services", "/insurance", "/new-patients", "/schedule", "/pay-bill",
-        "/careers", "/location", "/contact", "/privacy", "/thanks",
+        "/careers", "/location", "/contact", "/privacy", "/thanks", "/financing",
         "/static/forms/new-patient-packet.pdf",
         "/static/forms/hipaa-notice.pdf",
     ]
