@@ -392,15 +392,16 @@ endblock %}
                     </div>
                 </div>
 
-                <!-- Result Display -->
-                <div class="text-center">
+                <!-- Result Display (WCAG 4.1.3: announces changes to screen readers) -->
+                <div class="text-center" aria-live="polite" aria-atomic="true">
                     <div
                         class="rounded-2xl p-8 bg-gradient-to-br from-mint-500/10 via-mint-500/5 to-transparent border border-mint-500/20">
-                        <p class="text-sm text-white/50 mb-2 uppercase tracking-wider font-medium">Estimated Monthly
+                        <p class="text-sm text-white/70 mb-2 uppercase tracking-wider font-medium">Estimated Monthly
                             Payment</p>
                         <p class="text-6xl lg:text-7xl font-display font-bold text-white mb-1 transition-all duration-300"
-                            x-text="'$' + monthlyPayment"></p>
-                        <p class="text-sm text-white/40">per month for <span class="text-white/60" x-text="term"></span>
+                            x-text="'$' + monthlyPayment"
+                            aria-label="Estimated monthly payment"></p>
+                        <p class="text-sm text-white/70">per month for <span class="text-white/80" x-text="term"></span>
                             months</p>
 
                         <div class="mt-6 pt-6 border-t border-white/10 space-y-2">
@@ -419,10 +420,11 @@ endblock %}
                         </div>
                     </div>
 
-                    <a href="https://patient.withcherry.com/apply" target="_blank" rel="noopener"
+                    <a href="https://patient.withcherry.com/apply" target="_blank" rel="noopener noreferrer"
+                        aria-label="Apply Now with Cherry (opens in new tab)"
                         class="btn-premium mt-6 w-full justify-center text-base">
                         <span>Apply Now with Cherry</span>
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -586,23 +588,32 @@ endblock %}
             {% for faq in faqs %}
             <div class="rounded-2xl overflow-hidden transition-all duration-300"
                 :class="openFaq === {{ loop.index0 }} ? 'bg-white/[0.06] shadow-lg' : 'bg-white/[0.03]'">
+                <!-- WCAG 4.1.2: aria-expanded + aria-controls on toggle button -->
                 <button @click="openFaq = openFaq === {{ loop.index0 }} ? null : {{ loop.index0 }}"
-                    class="w-full flex items-center justify-between p-6 text-left group cursor-pointer">
+                    :aria-expanded="String(openFaq === {{ loop.index0 }})"
+                    aria-controls="faq-answer-{{ loop.index0 }}"
+                    id="faq-btn-{{ loop.index0 }}"
+                    class="w-full flex items-center justify-between p-6 text-left group cursor-pointer focus:outline-none focus:ring-2 focus:ring-coral-500/50 focus:ring-inset">
                     <h3 class="font-display font-semibold text-white pr-8 text-base sm:text-lg">{{ faq.q }}</h3>
                     <svg class="w-5 h-5 text-white/40 flex-shrink-0 transition-transform duration-300"
                         :class="openFaq === {{ loop.index0 }} ? 'rotate-180 text-coral-400' : ''" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true" focusable="false">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div x-show="openFaq === {{ loop.index0 }}" x-transition:enter="transition ease-out duration-300"
+                <div id="faq-answer-{{ loop.index0 }}"
+                    role="region"
+                    aria-labelledby="faq-btn-{{ loop.index0 }}"
+                    x-show="openFaq === {{ loop.index0 }}"
+                    x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 -translate-y-2"
                     x-transition:enter-end="opacity-100 translate-y-0"
                     x-transition:leave="transition ease-in duration-200"
                     x-transition:leave-start="opacity-100 translate-y-0"
                     x-transition:leave-end="opacity-0 -translate-y-2" x-cloak>
                     <div class="px-6 pb-6">
-                        <p class="text-white/60 leading-relaxed">{{ faq.a }}</p>
+                        <p class="text-white/80 leading-relaxed">{{ faq.a }}</p>
                     </div>
                 </div>
             </div>

@@ -326,20 +326,23 @@
            transition-all duration-300
            focus:outline-none focus:ring-2 focus:ring-coral-500/50;
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    /* Increased from /10 to /30 for WCAG 1.4.11 non-text contrast (3:1 min) */
+    border: 1px solid rgba(255,255,255,0.30);
   }
 
   .input-premium:hover {
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.45);
   }
 
   .input-premium:focus {
     background: rgba(255,255,255,0.08);
-    border-color: rgba(240, 100, 90, 0.5);
+    border-color: rgba(240, 100, 90, 0.8);
+    box-shadow: 0 0 0 2px rgba(240, 100, 90, 0.4);
   }
 
   .input-premium::placeholder {
-    @apply text-white/40;
+    /* Bumped from /40 to /55 for minimum contrast */
+    color: rgba(255,255,255,0.55);
   }
 
   /* ─────────────────────────────────────────────────────────────────────────
@@ -428,7 +431,7 @@
 }
 
 @layer utilities {
-  /* Reduced motion support */
+  /* Reduced motion support — WCAG 2.3.3 / 2.2.2 */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -437,8 +440,65 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
   }
-}
+
+  /* High-contrast mode support — WCAG 1.4.3 / 1.4.6 */
+  @media (prefers-contrast: more) {
+    body {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    .card-premium,
+    .glass,
+    .glass-dark {
+      background: rgba(255,255,255,0.15) !important;
+      border: 1px solid rgba(255,255,255,0.6) !important;
+    }
+    .btn-premium {
+      background: #f0645a !important;
+      box-shadow: none !important;
+      border: 2px solid #fff !important;
+    }
+    .btn-outline-premium {
+      border-color: #fff !important;
+      color: #fff !important;
+    }
+    .input-premium {
+      border-color: rgba(255,255,255,0.8) !important;
+      background: rgba(0,0,0,0.8) !important;
+    }
+    /* Ensure gradient text fallbacks to solid colour */
+    .text-gradient-coral,
+    .text-gradient-animated,
+    .text-gradient-blue {
+      background: none !important;
+      -webkit-text-fill-color: unset !important;
+      color: #ff9a92 !important;
+    }
+  }
+
+  /* Screen-reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Screen-reader live region */
+  .a11y-live {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 
   /* Hide scrollbar utility */
   .scrollbar-hide {

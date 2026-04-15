@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Accessibility Statement – Duncan Family Dentistry{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="relative py-24 overflow-hidden">
+  <div class="absolute inset-0" aria-hidden="true">
+    <div class="absolute top-20 -left-40 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 -right-40 w-80 h-80 bg-mint-500/10 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <span class="reveal badge badge-blue mb-4">Accessibility</span>
+    <h1 class="reveal font-display text-5xl sm:text-6xl font-bold text-white mb-6">
+      Accessibility <span class="text-gradient-coral">Statement</span>
+    </h1>
+    <p class="reveal text-xl text-white/70 max-w-2xl mx-auto">
+      Duncan Family Dentistry is committed to making our website accessible to everyone.
+    </p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="py-16">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+    <article class="reveal card-premium p-10 text-white/80 leading-relaxed space-y-6">
+      <h2 class="font-display text-2xl font-bold text-white">Our Commitment</h2>
+      <p>
+        Duncan Family Dentistry is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone, and apply relevant accessibility standards.
+      </p>
+      <p>
+        We aim to conform to the <strong class="text-white">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>, as referenced by the Americans with Disabilities Act (ADA) and applicable federal regulations.
+      </p>
+    </article>
+
+    <article class="reveal card-premium p-10 text-white/80 leading-relaxed space-y-6">
+      <h2 class="font-display text-2xl font-bold text-white">Measures We've Taken</h2>
+      <ul class="list-disc list-inside space-y-2 text-white/80">
+        <li>Keyboard navigation throughout the site</li>
+        <li>Visible focus indicators on all interactive elements</li>
+        <li>Skip-to-content link at the top of every page</li>
+        <li>Descriptive alt text for all informational images</li>
+        <li>ARIA labels and roles for interactive components (navigation, forms, carousels, accordions)</li>
+        <li>Sufficient color contrast ratios (minimum 4.5:1 for body text)</li>
+        <li>Pause/stop controls for any auto-updating content</li>
+        <li>Reduced-motion support via CSS <code>prefers-reduced-motion</code></li>
+        <li>High-contrast mode support via CSS <code>prefers-contrast: more</code></li>
+        <li>Proper heading hierarchy on every page</li>
+        <li>Semantic HTML5 landmarks (header, nav, main, footer)</li>
+        <li>Form inputs linked to visible labels with autocomplete attributes</li>
+      </ul>
+    </article>
+
+    <article class="reveal card-premium p-10 text-white/80 leading-relaxed space-y-6">
+      <h2 class="font-display text-2xl font-bold text-white">Known Limitations</h2>
+      <p>
+        Some third-party embedded content — including our online scheduling tool and payment portal — may not fully conform to WCAG 2.1 AA. We are working with those vendors to improve accessibility. In the meantime, please contact us directly for assistance.
+      </p>
+    </article>
+
+    <article class="reveal card-premium p-10 text-white/80 leading-relaxed space-y-6">
+      <h2 class="font-display text-2xl font-bold text-white">Contact Us for Assistance</h2>
+      <p>
+        We welcome feedback on accessibility. If you experience any barriers or have suggestions, please reach out and we will do our best to accommodate you:
+      </p>
+      <ul class="space-y-3">
+        <li>
+          <strong class="text-white">Phone:</strong>
+          <a href="tel:+16062370073" class="text-coral-400 hover:text-coral-300 underline ml-2" aria-label="Call us at (606) 237-0073">(606) 237-0073</a>
+        </li>
+        <li>
+          <strong class="text-white">Email:</strong>
+          <a href="mailto:info@duncanfamilydentistry.com" class="text-coral-400 hover:text-coral-300 underline ml-2">info@duncanfamilydentistry.com</a>
+        </li>
+        <li>
+          <strong class="text-white">In Person:</strong>
+          <address class="inline not-italic ml-2">79 Mall Rd, Suite B, South Williamson, KY 41503</address>
+        </li>
+      </ul>
+      <p class="text-sm text-white/60">
+        We aim to respond to accessibility feedback within 2 business days.
+      </p>
+    </article>
+
+    <p class="reveal text-sm text-white/60 text-center">
+      This statement was last reviewed: <time datetime="2026-04-15">April 15, 2026</time>.
+    </p>
+
+  </div>
+</section>
+
+{% endblock %}

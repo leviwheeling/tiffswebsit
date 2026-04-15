@@ -35,29 +35,36 @@
             <a href="tel:+16062370073" class="text-coral-400 hover:text-coral-300 transition-colors">(606) 237-0073</a>.
       </p>
 
-          <form action="https://formspree.io/f/xzzvzdwe" method="POST" class="space-y-6" x-data="{ submitting: false }" @submit="submitting = true">
+          <!-- WCAG 4.1.3: live region for status messages -->
+          <div id="form-status" aria-live="assertive" aria-atomic="true" class="a11y-live"></div>
+
+          <form action="https://formspree.io/f/xzzvzdwe" method="POST" class="space-y-6" x-data="{ submitting: false }" @submit="submitting = true; document.getElementById('form-status').textContent = 'Sending your request...'">
             <input type="hidden" name="_subject" value="Website Appointment Request">
             <input type="hidden" name="_redirect" value="/thanks">
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <!-- Honeypot: hidden from all users including AT -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="grid sm:grid-cols-2 gap-6">
               <div>
-                <label for="name" class="block text-sm font-medium text-white/80 mb-2">Full Name *</label>
-            <input type="text" id="name" name="name" required
+                <label for="name" class="block text-sm font-medium text-white/80 mb-2">Full Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+            <input type="text" id="name" name="name" required aria-required="true"
+                       autocomplete="name"
                        class="input-premium"
                        placeholder="John Doe">
           </div>
               <div>
-                <label for="phone" class="block text-sm font-medium text-white/80 mb-2">Phone *</label>
-            <input type="tel" id="phone" name="phone" required
+                <label for="phone" class="block text-sm font-medium text-white/80 mb-2">Phone <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+            <input type="tel" id="phone" name="phone" required aria-required="true"
+                       autocomplete="tel"
                        class="input-premium"
                        placeholder="(606) 555-1234">
           </div>
         </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email *</label>
-          <input type="email" id="email" name="email" required
+              <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+          <input type="email" id="email" name="email" required aria-required="true"
+                     autocomplete="email"
                      class="input-premium"
                      placeholder="john@example.com">
         </div>
@@ -65,14 +72,17 @@
             <div>
               <label for="preferred_date" class="block text-sm font-medium text-white/80 mb-2">Preferred Date</label>
           <input type="date" id="preferred_date" name="preferred_date"
+                     autocomplete="off"
                      class="input-premium">
         </div>
 
             <div>
               <label for="message" class="block text-sm font-medium text-white/80 mb-2">
-                Message <span class="text-white/40 text-xs">(Please do not include Protected Health Information)</span>
+                Message
           </label>
+          <p id="message-hint" class="text-white/70 text-xs mb-2">(Please do not include Protected Health Information)</p>
           <textarea id="message" name="message" rows="4"
+                        aria-describedby="message-hint"
                         class="input-premium resize-y"
                         placeholder="Tell us how we can help..."></textarea>
         </div>
@@ -80,10 +90,10 @@
         <button type="submit"
                     :disabled="submitting"
                     class="btn-premium w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
-              <svg x-show="!submitting" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg x-show="!submitting" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
               </svg>
-              <svg x-show="submitting" x-cloak class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <svg x-show="submitting" x-cloak class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>

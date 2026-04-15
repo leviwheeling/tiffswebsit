@@ -58,6 +58,10 @@ async def location(request: Request):
 async def privacy(request: Request):
     return templates.TemplateResponse("privacy.html", {"request": request})
 
+@app.get("/accessibility", include_in_schema=False)
+async def accessibility(request: Request):
+    return templates.TemplateResponse("accessibility.html", {"request": request})
+
 @app.get("/careers", include_in_schema=False)
 async def careers(request: Request):
     return templates.TemplateResponse("careers.html", {"request": request})
@@ -76,7 +80,7 @@ async def sitemap_xml(request: Request):
     base = str(request.base_url).rstrip("/")
     urls = [
         "/", "/about", "/services", "/insurance", "/new-patients", "/schedule", "/pay-bill",
-        "/careers", "/location", "/contact", "/privacy", "/thanks", "/financing",
+        "/careers", "/location", "/contact", "/privacy", "/accessibility", "/thanks", "/financing",
         "/static/forms/new-patient-packet.pdf",
         "/static/forms/hipaa-notice.pdf",
     ]
