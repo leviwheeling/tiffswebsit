@@ -19,60 +19,60 @@ templates.env.globals["now"] = datetime.now     # enables {{ now().year }}
 # ── PAGE ROUTES ──────────────────────────────────────────────────────────────
 @app.get("/", include_in_schema=False)
 async def home(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+    return templates.TemplateResponse("home.html", context={"request": request})
 
 @app.get("/about", include_in_schema=False)
 async def about(request: Request):
-    return templates.TemplateResponse("about.html", {"request": request})
+    return templates.TemplateResponse("about.html", context={"request": request})
 
 @app.get("/services", include_in_schema=False)
 async def services(request: Request):
-    return templates.TemplateResponse("services.html", {"request": request})
+    return templates.TemplateResponse("services.html", context={"request": request})
 
 @app.get("/insurance", include_in_schema=False)
 async def insurance(request: Request):
-    return templates.TemplateResponse("insurance.html", {"request": request})
+    return templates.TemplateResponse("insurance.html", context={"request": request})
 
 @app.get("/new-patients", include_in_schema=False)
 @app.get("/new_patients", include_in_schema=False)
 async def new_patients(request: Request):
-    return templates.TemplateResponse("new_patients.html", {"request": request})
+    return templates.TemplateResponse("new_patients.html", context={"request": request})
 
 @app.get("/schedule", include_in_schema=False)
 async def schedule(request: Request):
-    return templates.TemplateResponse("schedule.html", {"request": request})
+    return templates.TemplateResponse("schedule.html", context={"request": request})
 
 @app.get("/pay-bill", include_in_schema=False)
 async def pay_bill(request: Request):
-    return templates.TemplateResponse("pay_bill.html", {"request": request})
+    return templates.TemplateResponse("pay_bill.html", context={"request": request})
 
 @app.get("/contact", include_in_schema=False)
 async def contact(request: Request):
-    return templates.TemplateResponse("contact.html", {"request": request})
+    return templates.TemplateResponse("contact.html", context={"request": request})
 
 @app.get("/location", include_in_schema=False)
 async def location(request: Request):
-    return templates.TemplateResponse("location.html", {"request": request})
+    return templates.TemplateResponse("location.html", context={"request": request})
 
 @app.get("/privacy", include_in_schema=False)
 async def privacy(request: Request):
-    return templates.TemplateResponse("privacy.html", {"request": request})
+    return templates.TemplateResponse("privacy.html", context={"request": request})
 
 @app.get("/accessibility", include_in_schema=False)
 async def accessibility(request: Request):
-    return templates.TemplateResponse("accessibility.html", {"request": request})
+    return templates.TemplateResponse("accessibility.html", context={"request": request})
 
 @app.get("/careers", include_in_schema=False)
 async def careers(request: Request):
-    return templates.TemplateResponse("careers.html", {"request": request})
+    return templates.TemplateResponse("careers.html", context={"request": request})
 
 @app.get("/thanks", include_in_schema=False)
 async def thanks(request: Request):
-    return templates.TemplateResponse("thanks.html", {"request": request})
+    return templates.TemplateResponse("thanks.html", context={"request": request})
 
 @app.get("/financing", include_in_schema=False)
 async def financing(request: Request):
-    return templates.TemplateResponse("financing.html", {"request": request})
+    return templates.TemplateResponse("financing.html", context={"request": request})
 
 # ── SITEMAP & ROBOTS ─────────────────────────────────────────────────────────
 @app.get("/sitemap.xml", include_in_schema=False)
