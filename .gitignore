@@ -1,2 +1,6 @@
-sendgrid.env
-sendgrid.env
+# Local environment and Python build artifacts
+.env
+.env.*
+env/
+__pycache__/
+*.py[cod]
